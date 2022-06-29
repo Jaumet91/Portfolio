@@ -46,13 +46,15 @@ const navigationVariants = {
 
 const sidebarVariants = {
   open: {
-    clipPath: `circle(1500px at 230px 40px)`,
+    // clipPath: `circle(1200px at 230px 40px)`,
+    x: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
     },
   },
   closed: {
-    clipPath: `circle(25px at 230px 40px)`,
+    // clipPath: `circle(25px at 230px 40px)`,
+    x: 300,
     transition: {
       duration: 0.4,
       delay: 0.4,
@@ -67,6 +69,12 @@ export const NavHome = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 875;
+
+  if (isOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
@@ -87,6 +95,10 @@ export const NavHome = () => {
 
   const handleOnClick = () => {
     window.scrollTo({ top: 0 });
+
+    if (isOpen) {
+      toggleOpen(false);
+    }
   };
 
   return (
@@ -181,7 +193,10 @@ export const NavHome = () => {
         </AnimatePresence>
       ) : (
         <>
-          <div className='fixed z-10 w-screen h-screen'>
+          <div
+            className={`fixed z-10 w-screen h-screen  ${
+              isOpen && 'backdrop-blur-sm bg-white/30'
+            }`}>
             <motion.div
               className={`flex container justify-between py-2 fixed transition-shadow duration-500 
           min-w-full px-5 z-20 ${
@@ -210,15 +225,15 @@ export const NavHome = () => {
                 </div>
               </Link>
               <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'}>
+                <NavToggler toggle={() => toggleOpen()} />
                 <motion.div className='background' variants={sidebarVariants}>
-                  <NavToggler toggle={() => toggleOpen()} />
                   <motion.ul
                     variants={navigationVariants}
                     className=' p-5 absolute top-[100px] w-[260px]'>
                     {navLinks.map(({ url, name }, i) => {
                       return (
                         <motion.li key={i} variants={menuItemVariants}>
-                          <a href={url}>
+                          <a href={url} onClick={() => toggleOpen(false)}>
                             <span className='icon-placeholder'></span>
                             <span className='flex items-center mb-5 space-x-6 cursor-pointer'>
                               {name}

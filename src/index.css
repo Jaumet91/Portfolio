@@ -4,12 +4,34 @@
 
 @layer components {
   .background {
-    @apply bg-hover-1 fixed top-0 right-0 bottom-0 w-[300px] h-screen z-30;
+    @apply bg-hover-1 fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30;
   }
   .icon-placeholder {
     @apply w-[45px] h-[45px] rounded-full;
   }
   .text-placeholder {
     @apply flex-1 h-8 rounded-lg;
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #fff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #a6a7ab;
+    border-radius: 100vh;
+    border: 3px solid #fff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a6a7ab;
   }
 }

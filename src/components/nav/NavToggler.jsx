@@ -15,7 +15,7 @@ export const NavToggler = ({ toggle }) => {
   return (
     <button
       onClick={toggle}
-      className='border-0 outline-none focus:outline-none absolute top-[17px] left-[219px] w-[50px] h-[50px] rounded-full z-40'>
+      className='border-0 outline-none focus:outline-none absolute top-[17px] right-[10px] w-[50px] h-[50px] rounded-full z-40'>
       <svg width='23' height='23' viewBox='0 0 23 23'>
         <Path
           variants={{
