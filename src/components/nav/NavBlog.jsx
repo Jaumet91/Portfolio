@@ -4,7 +4,12 @@ import { FaGhost } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { useScrollDirection } from '../../hooks';
-import { desktopAvatarLight } from '../../assets';
+import { desktopAvatarLight, desktopAvatarLighHover } from '../../assets';
+
+const btnAni = {
+  hover: { y: -3 },
+  tap: { y: 0 },
+};
 
 export const NavBlog = () => {
   const scrollDirection = useScrollDirection('');
@@ -40,22 +45,56 @@ export const NavBlog = () => {
         }}>
         <Link to='/' className='order-first' onClick={handleOnClick}>
           <div className='flex items-center ml-5'>
-            <img src={desktopAvatarLight} />
+            <img
+              className='hover:opacity-0 absolute'
+              src={desktopAvatarLight}
+            />
+            <img
+              className='opacity-0 hover:opacity-100 z-10 transition-opacity'
+              src={desktopAvatarLighHover}
+            />
             <span className='ml-3'>Jaime Cortes</span>
           </div>
         </Link>
 
         <div className='order-last flex items-center'>
-          <Link className='px-3 mx-2' to='/' onClick={handleOnClick}>
-            Home
-          </Link>
-          <Link className='px-3 mx-2' to='/blog' onClick={handleOnClick}>
-            Blog
-          </Link>
-          <button className='justify-self-start px-6 py-2 rounded-lg mx-2 bg-secondary'>
+          <motion.div variants={btnAni} whileHover='hover' whileTap='tap'>
+            <Link
+              to='/'
+              onClick={handleOnClick}
+              className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
+                shadow transition-shadow'>
+              Portfolio
+            </Link>
+          </motion.div>
+
+          <motion.div variants={btnAni} whileHover='hover' whileTap='tap'>
+            <Link
+              to='/blog'
+              onClick={handleOnClick}
+              className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
+                shadow transition-shadow'>
+              Blog
+            </Link>
+          </motion.div>
+
+          <motion.button
+            variants={btnAni}
+            whileHover='hover'
+            whileTap='tap'
+            className='px-6 py-2 rounded-lg ml-2 bg-secondary hover:shadow-md shadow-black/5 
+              shadow transition-shadow'>
             Resume
-          </button>
-          <FaGhost size={21} className=' text-toggle mx-3' />
+          </motion.button>
+
+          <div
+            className='hover:bg-hover-1 w-10 h-10 rounded-md place-content-center grid
+           transition-colors ml-3'>
+            <FaGhost
+              size={37}
+              className=' text-toggle hover:text-hover-2 cursor-pointer transition-colors p-2'
+            />
+          </div>
         </div>
       </motion.nav>
     </AnimatePresence>

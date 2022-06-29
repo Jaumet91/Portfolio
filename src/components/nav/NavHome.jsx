@@ -5,9 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
-import { desktopAvatarLight } from '../../assets';
+import { desktopAvatarLight, desktopAvatarLighHover } from '../../assets';
 
 const { navLinks } = config;
+
+const btnAni = {
+  hover: { y: -3 },
+  tap: { y: 0 },
+};
 
 export const NavHome = () => {
   const scrollDirection = useScrollDirection('');
@@ -29,11 +34,12 @@ export const NavHome = () => {
   return (
     <AnimatePresence>
       <motion.nav
-        className={`flex container justify-between py-2 fixed transition-shadow duration-500 min-w-full px-24 ${
-          scrolledToTop === false
-            ? 'backdrop-blur-sm bg-white/30 shadow-lg shadow-black/5'
-            : 'shadow-none'
-        }`}
+        className={`flex container justify-between py-2 fixed transition-shadow duration-500 
+          min-w-full px-24 ${
+            scrolledToTop === false
+              ? 'backdrop-blur-sm bg-white/30 shadow-lg shadow-black/5'
+              : 'shadow-none'
+          }`}
         initial={{ y: -200 }}
         animate={{ y: scrolledToTop || scrollDirection === 'up' ? 0 : -200 }}
         transition={{
@@ -42,7 +48,14 @@ export const NavHome = () => {
         }}>
         <Link to='/' className='order-first' onClick={handleOnClick}>
           <div className='flex items-center ml-5'>
-            <img src={desktopAvatarLight} />
+            <img
+              className='hover:opacity-0 absolute'
+              src={desktopAvatarLight}
+            />
+            <img
+              className='opacity-0 hover:opacity-100 z-10 transition-opacity'
+              src={desktopAvatarLighHover}
+            />
             <span className='ml-3'>Jaime Cortes</span>
           </div>
         </Link>
@@ -73,13 +86,34 @@ export const NavHome = () => {
               );
             })}
           </motion.ul>
-          <Link className='px-3 mx-2' to='/blog' onClick={handleOnClick}>
-            Blog
-          </Link>
-          <button className='justify-self-start px-6 py-2 rounded-lg mx-2 bg-secondary'>
+
+          <motion.div variants={btnAni} whileHover='hover' whileTap='tap'>
+            <Link
+              to='/blog'
+              onClick={handleOnClick}
+              className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
+                shadow transition-shadow'>
+              Blog
+            </Link>
+          </motion.div>
+
+          <motion.button
+            variants={btnAni}
+            whileHover='hover'
+            whileTap='tap'
+            className='px-6 py-2 rounded-lg ml-2 bg-secondary hover:shadow-md shadow-black/5 
+              shadow transition-shadow'>
             Resume
-          </button>
-          <FaGhost size={21} className=' text-toggle mx-3' />
+          </motion.button>
+
+          <div
+            className='hover:bg-hover-1 w-10 h-10 rounded-md place-content-center grid
+           transition-colors ml-3'>
+            <FaGhost
+              size={37}
+              className=' text-toggle hover:text-hover-2 cursor-pointer transition-colors p-2'
+            />
+          </div>
         </div>
       </motion.nav>
     </AnimatePresence>
