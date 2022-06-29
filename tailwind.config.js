@@ -16,6 +16,9 @@ module.exports = {
         'hover-inverted': '#ffd166',
         toggle: '#a6a7ab',
       },
+      screens: {
+        md: '875px',
+      },
     },
   },
   plugins: [],
