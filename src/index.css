@@ -4,7 +4,7 @@
 
 @layer components {
   .background {
-    @apply bg-hover-1 fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30 drop-shadow-xl;
+    @apply bg-hover-1 dark:bg-secondary-inverted fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30 drop-shadow-xl;
   }
 }
 
@@ -27,5 +27,25 @@
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #a6a7ab;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #23262f;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #3c3a50;
+    border-radius: 100vh;
+    border: 3px solid #23262f;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: #3c3a50;
   }
 }

@@ -5,25 +5,27 @@ const Path = props => (
   <motion.path
     fill='transparent'
     strokeWidth='3'
-    stroke='hsl(0, 0%, 18%)'
+    stroke={props.theme === 'dark' ? 'white' : 'black'}
     strokeLinecap='round'
     {...props}
   />
 );
 
-export const NavToggler = ({ toggle }) => {
+export const NavToggler = ({ toggle, theme }) => {
   return (
     <button
       onClick={toggle}
       className='border-0 outline-none focus:outline-none absolute top-[17px] right-[10px] w-[50px] h-[50px] rounded-full z-40'>
       <svg width='23' height='23' viewBox='0 0 23 23'>
         <Path
+          theme={theme}
           variants={{
             closed: { d: 'M 2 2.5 L 20 2.5' },
             open: { d: 'M 3 16.5 L 17 2.5' },
           }}
         />
         <Path
+          theme={theme}
           d='M 2 9.423 L 20 9.423'
           variants={{
             closed: { opacity: 1 },
@@ -32,6 +34,7 @@ export const NavToggler = ({ toggle }) => {
           transition={{ duration: 0.1 }}
         />
         <Path
+          theme={theme}
           variants={{
             closed: { d: 'M 2 16.346 L 20 16.346' },
             open: { d: 'M 3 2.5 L 17 16.346' },
@@ -44,4 +47,9 @@ export const NavToggler = ({ toggle }) => {
 
 NavToggler.propTypes = {
   toggle: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
+};
+
+Path.propTypes = {
+  theme: PropTypes.string.isRequired,
 };

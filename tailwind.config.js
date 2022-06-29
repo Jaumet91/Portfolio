@@ -1,5 +1,6 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -21,5 +22,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar')],
+  plugins: [],
 };

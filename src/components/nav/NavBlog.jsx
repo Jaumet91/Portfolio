@@ -1,10 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGhost, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { motion, AnimatePresence, useCycle } from 'framer-motion';
 
+import { ThemeContext } from '../../utils';
 import { useScrollDirection } from '../../hooks';
-import { desktopAvatarLight, desktopAvatarLighHover } from '../../assets';
+import {
+  desktopAvatarLight,
+  desktopAvatarLighHover,
+  desktopAvatarDark,
+  desktopAvatarDarkHover,
+} from '../../assets';
 import { NavToggler } from './';
 
 const sidebarVariants = {
@@ -30,6 +36,7 @@ const btnAni = {
 };
 
 export const NavBlog = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
   const scrollDirection = useScrollDirection('');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -76,7 +83,7 @@ export const NavBlog = () => {
         transition-shadow duration-500 min-w-full px-24
         ${
           scrolledToTop === false
-            ? 'backdrop-blur-sm bg-white/30 shadow-lg shadow-black/5'
+            ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
             : 'shadow-none'
         }`}
             initial={{ y: -200 }}
@@ -91,23 +98,29 @@ export const NavBlog = () => {
               <div className='flex items-center ml-5'>
                 <img
                   className='hover:opacity-0 absolute'
-                  src={desktopAvatarLight}
+                  src={
+                    theme === 'dark' ? desktopAvatarDark : desktopAvatarLight
+                  }
                 />
                 <img
                   className='opacity-0 hover:opacity-100 z-10 transition-opacity'
-                  src={desktopAvatarLighHover}
+                  src={
+                    theme === 'dark'
+                      ? desktopAvatarDarkHover
+                      : desktopAvatarLighHover
+                  }
                 />
-                <span className='ml-3'>Jaime Cortes</span>
+                <span className='ml-3 dark:text-white'>Jaime Cortes</span>
               </div>
             </Link>
 
-            <div className='order-last flex items-center'>
+            <div className='order-last flex items-center dark:text-white'>
               <motion.div variants={btnAni} whileHover='hover' whileTap='tap'>
                 <Link
                   to='/'
                   onClick={handleOnClick}
                   className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
-                shadow transition-shadow'>
+                shadow transition-shadow dark:bg-secondary-inverted '>
                   Portfolio
                 </Link>
               </motion.div>
@@ -117,7 +130,7 @@ export const NavBlog = () => {
                   to='/blog'
                   onClick={handleOnClick}
                   className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
-                shadow transition-shadow'>
+                shadow transition-shadow dark:bg-secondary-inverted '>
                   Blog
                 </Link>
               </motion.div>
@@ -127,16 +140,17 @@ export const NavBlog = () => {
                 whileHover='hover'
                 whileTap='tap'
                 className='px-6 py-2 rounded-lg ml-2 bg-secondary hover:shadow-md shadow-black/5 
-              shadow transition-shadow'>
+              shadow transition-shadow dark:bg-secondary-inverted '>
                 Resume
               </motion.button>
 
               <div
-                className='hover:bg-hover-1 w-10 h-10 rounded-md place-content-center grid
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className='hover:bg-hover-1 dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
            transition-colors ml-3'>
                 <FaGhost
                   size={37}
-                  className=' text-toggle hover:text-hover-2 cursor-pointer transition-colors p-2'
+                  className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
                 />
               </div>
             </div>
@@ -146,13 +160,14 @@ export const NavBlog = () => {
         <>
           <div
             className={`fixed z-10 w-screen h-screen  ${
-              isOpen && 'backdrop-blur-sm bg-white/30'
+              isOpen &&
+              'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30'
             }`}>
             <motion.div
               className={`flex container justify-between py-2 fixed transition-shadow duration-500 
           min-w-full px-5 z-20 ${
             scrolledToTop === false
-              ? 'backdrop-blur-sm bg-white/30 shadow-lg shadow-black/5'
+              ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
               : 'shadow-none'
           }`}
               initial={{ y: -200 }}
@@ -167,23 +182,32 @@ export const NavBlog = () => {
                 <div className='flex items-center'>
                   <img
                     className='active:opacity-0 absolute'
-                    src={desktopAvatarLight}
+                    src={
+                      theme === 'dark' ? desktopAvatarDark : desktopAvatarLight
+                    }
                   />
                   <img
                     className='opacity-0 hover:opacity-100 z-10 transition-opacity'
-                    src={desktopAvatarLighHover}
+                    src={
+                      theme === 'dark'
+                        ? desktopAvatarDarkHover
+                        : desktopAvatarLighHover
+                    }
                   />
                 </div>
               </Link>
               <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'}>
-                <NavToggler toggle={() => toggleOpen()} />
+                <NavToggler toggle={() => toggleOpen()} theme={theme} />
                 <motion.div className='background' variants={sidebarVariants}>
                   <div
-                    className='hover:bg-[#E3E3E3] w-10 h-10 rounded-md place-content-center grid
+                    onClick={() =>
+                      setTheme(theme === 'dark' ? 'light' : 'dark')
+                    }
+                    className='hover:bg-[#E3E3E3] dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
                       transition-colors ml-5 mt-5'>
                     <FaGhost
                       size={37}
-                      className=' text-toggle hover:text-hover-2 cursor-pointer transition-colors p-2'
+                      className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
                     />
                   </div>
                   <motion.div
@@ -194,8 +218,8 @@ export const NavBlog = () => {
                     <Link
                       to='/'
                       onClick={handleOnClick}
-                      className='py-3 px-11 bg-btn rounded-xl hover:shadow-md
-                      shadow-black/5 shadow transition-shadow text-white w-[200px]'>
+                      className='py-3 px-11 bg-btn rounded-xl hover:shadow-md dark:text-background-inverted
+                      shadow-black/5 shadow transition-shadow text-white w-[200px] dark:bg-white'>
                       Portfolio
                     </Link>
                   </motion.div>
@@ -205,8 +229,8 @@ export const NavBlog = () => {
                     whileTap='tap'
                     className='absolute left-1/2 -ml-[75px] w-[150px] top-[320px] sm:top-[400px] flex justify-center'>
                     <button
-                      className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white
-                    shadow-black/5 shadow transition-shadow w-[200px]'>
+                      className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white dark:bg-white
+                    shadow-black/5 shadow transition-shadow w-[200px] dark:text-background-inverted'>
                       Resume {/* TODO: descarga CV */}
                     </button>
                   </motion.div>
@@ -218,29 +242,29 @@ export const NavBlog = () => {
                     <Link
                       to='/blog'
                       onClick={handleOnClick}
-                      className='py-3 px-14 bg-btn rounded-xl hover:shadow-md
-                      shadow-black/5 shadow transition-shadow text-white w-[200px]'>
+                      className='py-3 px-14 bg-btn rounded-xl hover:shadow-md dark:text-background-inverted
+                      shadow-black/5 shadow transition-shadow text-white w-[200px] dark:bg-white'>
                       Blog
                     </Link>
                   </motion.div>
                   {/* TODO: enlaces redes sociales */}
                   <div className='absolute left-1/2 -ml-[75px] w-[150px] top-[490px] sm:top-[570px] flex justify-center'>
                     <motion.div
-                      className='mx-3 cursor-pointer'
+                      className='mx-3 cursor-pointer dark:text-white'
                       variants={btnAni}
                       whileHover='hover'
                       whileTap='tap'>
                       <FaGithub size={25} />
                     </motion.div>
                     <motion.div
-                      className='mx-3 cursor-pointer'
+                      className='mx-3 cursor-pointer dark:text-white'
                       variants={btnAni}
                       whileHover='hover'
                       whileTap='tap'>
                       <FaLinkedin size={25} />
                     </motion.div>
                     <motion.div
-                      className='mx-3 cursor-pointer'
+                      className='mx-3 cursor-pointer dark:text-white'
                       variants={btnAni}
                       whileHover='hover'
                       whileTap='tap'>
