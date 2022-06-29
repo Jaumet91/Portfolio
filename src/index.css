@@ -4,13 +4,7 @@
 
 @layer components {
   .background {
-    @apply bg-hover-1 fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30;
-  }
-  .icon-placeholder {
-    @apply w-[45px] h-[45px] rounded-full;
-  }
-  .text-placeholder {
-    @apply flex-1 h-8 rounded-lg;
+    @apply bg-hover-1 fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30 drop-shadow-xl;
   }
 }
 

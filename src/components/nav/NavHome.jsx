@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGhost } from 'react-icons/fa';
+import {
+  FaGhost,
+  FaRegComment,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from 'react-icons/fa';
+import { AiOutlineExperiment } from 'react-icons/ai';
+import { BiMobileVibration } from 'react-icons/bi';
 import { motion, AnimatePresence, useCycle } from 'framer-motion';
 
 import { useScrollDirection } from '../../hooks';
@@ -9,6 +17,8 @@ import { desktopAvatarLight, desktopAvatarLighHover } from '../../assets';
 import { NavToggler } from './';
 
 const { navLinks } = config;
+
+const iconsMenu = [BiMobileVibration, AiOutlineExperiment, FaRegComment];
 
 const btnAni = {
   hover: { y: -3 },
@@ -229,20 +239,80 @@ export const NavHome = () => {
                 <motion.div className='background' variants={sidebarVariants}>
                   <motion.ul
                     variants={navigationVariants}
-                    className=' p-5 absolute top-[100px] w-[260px]'>
+                    className=' p-5 absolute left-1/2 -ml-[75px] w-[150px] top-[100px] sm:top-[150px]'>
                     {navLinks.map(({ url, name }, i) => {
+                      const Icon = iconsMenu[i];
                       return (
-                        <motion.li key={i} variants={menuItemVariants}>
+                        <motion.li
+                          key={i}
+                          variants={menuItemVariants}
+                          className='flex items-center space-x-6 cursor-pointer my-14 hover:text-primary transition-colors'>
                           <a href={url} onClick={() => toggleOpen(false)}>
-                            <span className='icon-placeholder'></span>
-                            <span className='flex items-center mb-5 space-x-6 cursor-pointer'>
-                              {name}
-                            </span>
+                            <div className='flex'>
+                              <Icon size={25} />
+                              <span className='flex mx-5'>{name}</span>
+                            </div>
                           </a>
                         </motion.li>
                       );
                     })}
                   </motion.ul>
+                  <div
+                    className='hover:bg-[#E3E3E3] w-10 h-10 rounded-md place-content-center grid
+                      transition-colors ml-5 mt-5'>
+                    <FaGhost
+                      size={37}
+                      className=' text-toggle hover:text-hover-2 cursor-pointer transition-colors p-2'
+                    />
+                  </div>
+                  <motion.div
+                    variants={btnAni}
+                    whileHover='hover'
+                    whileTap='tap'
+                    className='absolute left-1/2 -ml-[75px] w-[150px] top-[520px] sm:top-[570px] flex justify-center'>
+                    <Link
+                      to='/blog'
+                      onClick={handleOnClick}
+                      className='py-3 px-14 bg-btn rounded-xl hover:shadow-md
+                      shadow-black/5 shadow transition-shadow text-white'>
+                      Blog
+                    </Link>
+                  </motion.div>
+                  <motion.div
+                    variants={btnAni}
+                    whileHover='hover'
+                    whileTap='tap'
+                    className='absolute left-1/2 -ml-[75px] w-[150px] top-[450px] sm:top-[500px] flex justify-center'>
+                    <button
+                      className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white
+                    shadow-black/5 shadow transition-shadow'>
+                      Resume {/* TODO: descarga CV */}
+                    </button>
+                  </motion.div>
+                  {/* TODO: enlaces redes sociales */}
+                  <div className='absolute left-1/2 -ml-[75px] w-[150px] top-[620px] sm:top-[670px] flex justify-center'>
+                    <motion.div
+                      className='mx-3 cursor-pointer'
+                      variants={btnAni}
+                      whileHover='hover'
+                      whileTap='tap'>
+                      <FaGithub size={25} />
+                    </motion.div>
+                    <motion.div
+                      className='mx-3 cursor-pointer'
+                      variants={btnAni}
+                      whileHover='hover'
+                      whileTap='tap'>
+                      <FaLinkedin size={25} />
+                    </motion.div>
+                    <motion.div
+                      className='mx-3 cursor-pointer'
+                      variants={btnAni}
+                      whileHover='hover'
+                      whileTap='tap'>
+                      <FaTwitter size={25} />
+                    </motion.div>
+                  </div>
                 </motion.div>
               </motion.nav>
             </motion.div>
