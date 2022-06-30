@@ -69,17 +69,17 @@ export const NavBlog = () => {
   };
 
   return (
-    <>
+    <header>
       {width > breakpoint ? (
         <AnimatePresence>
           <motion.nav
-            className={`flex container justify-between py-2 fixed 
-        transition-shadow duration-500 min-w-full px-24
-        ${
-          scrolledToTop === false
-            ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
-            : 'shadow-none'
-        }`}
+            className={`flex container justify-between py-2 fixed z-50
+              transition-shadow duration-500 min-w-full px-24
+                ${
+                  scrolledToTop === false
+                    ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
+                    : 'shadow-none'
+                }`}
             initial={{ y: -200 }}
             animate={{
               y: scrolledToTop || scrollDirection === 'up' ? 0 : -200,
@@ -101,7 +101,7 @@ export const NavBlog = () => {
                   to='/'
                   onClick={handleOnClick}
                   className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
-                shadow transition-shadow dark:bg-secondary-inverted '>
+                    transition-shadow dark:bg-secondary-inverted '>
                   Portfolio
                 </Link>
               </motion.div>
@@ -111,7 +111,7 @@ export const NavBlog = () => {
                   to='/blog'
                   onClick={handleOnClick}
                   className='py-2.5 px-6 mx-2 bg-secondary rounded-lg hover:shadow-md shadow-black/5 
-                shadow transition-shadow dark:bg-secondary-inverted '>
+                    transition-shadow dark:bg-secondary-inverted '>
                   Blog
                 </Link>
               </motion.div>
@@ -121,7 +121,7 @@ export const NavBlog = () => {
                 whileHover='hover'
                 whileTap='tap'
                 className='px-6 py-2 rounded-lg ml-2 bg-secondary hover:shadow-md shadow-black/5 
-              shadow transition-shadow dark:bg-secondary-inverted '>
+                  transition-shadow dark:bg-secondary-inverted '>
                 Resume
               </motion.button>
 
@@ -140,15 +140,15 @@ export const NavBlog = () => {
       ) : (
         <>
           <div
-            className={`fixed z-10 w-screen h-screen  ${
+            className={`${
               isOpen &&
-              'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30'
+              'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 fixed w-screen h-screen z-50'
             }`}>
             <motion.div
               className={`flex container justify-between py-2 fixed transition-shadow duration-500 
                 min-w-full px-5 z-20 ${
                   scrolledToTop === false
-                    ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
+                    ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
                     : 'shadow-none'
                 }`}
               initial={{ y: -200 }}
@@ -188,7 +188,7 @@ export const NavBlog = () => {
                       to='/'
                       onClick={handleOnClick}
                       className='py-3 px-11 bg-btn rounded-xl hover:shadow-md dark:text-background-inverted
-                      shadow-black/5 shadow transition-shadow text-white w-[200px] dark:bg-white'>
+                      shadow-black/5 transition-shadow text-white w-[200px] dark:bg-white'>
                       Portfolio
                     </Link>
                   </motion.div>
@@ -200,7 +200,7 @@ export const NavBlog = () => {
                     className='absolute left-1/2 -ml-[75px] w-[150px] top-[320px] sm:top-[400px] flex justify-center'>
                     <button
                       className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white dark:bg-white
-                    shadow-black/5 shadow transition-shadow w-[200px] dark:text-background-inverted'>
+                    shadow-black/5 transition-shadow w-[200px] dark:text-background-inverted'>
                       Resume {/* TODO: descarga CV */}
                     </button>
                   </motion.div>
@@ -214,7 +214,7 @@ export const NavBlog = () => {
                       to='/blog'
                       onClick={handleOnClick}
                       className='py-3 px-14 bg-btn rounded-xl hover:shadow-md dark:text-background-inverted
-                      shadow-black/5 shadow transition-shadow text-white w-[200px] dark:bg-white'>
+                      shadow-black/5 transition-shadow text-white w-[200px] dark:bg-white'>
                       Blog
                     </Link>
                   </motion.div>
@@ -228,6 +228,6 @@ export const NavBlog = () => {
           </div>
         </>
       )}
-    </>
+    </header>
   );
 };

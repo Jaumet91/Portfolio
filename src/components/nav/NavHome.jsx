@@ -107,16 +107,16 @@ export const NavHome = () => {
   };
 
   return (
-    <>
+    <header>
       {width > breakpoint ? (
         <AnimatePresence>
           <motion.nav
-            className={`flex container justify-between py-2 fixed transition-shadow duration-500
-          min-w-full px-20 ${
-            scrolledToTop === false
-              ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
-              : 'shadow-none'
-          }`}
+            className={`flex container justify-between py-2 fixed transition-shadow duration-500 z-50
+              min-w-full px-20 ${
+                scrolledToTop === false
+                  ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
+                  : 'shadow-none'
+              }`}
             initial={{ y: -200 }}
             animate={{
               y: scrolledToTop || scrollDirection === 'up' ? 0 : -200,
@@ -151,7 +151,7 @@ export const NavHome = () => {
                         {isActive ? (
                           <motion.span
                             layoutId='shadow'
-                            className='absolute inset-0 dark:bg-[#191c23] bg-hover-1 rounded-lg -z-10'
+                            className='absolute inset-0 dark:bg-[#191c23] bg-primary rounded-lg -z-10'
                           />
                         ) : null}
                         <span>{name}</span>
@@ -166,7 +166,7 @@ export const NavHome = () => {
                   to='/blog'
                   onClick={handleOnClick}
                   className='py-2.5 px-6 mx-2 bg-secondary dark:bg-secondary-inverted rounded-lg hover:shadow-md
-               shadow-black/5 shadow transition-shadow'>
+               shadow-black/5 transition-shadow'>
                   Blog
                 </Link>
               </motion.div>
@@ -176,7 +176,7 @@ export const NavHome = () => {
                 whileHover='hover'
                 whileTap='tap'
                 className='px-6 py-2 rounded-lg ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
-              shadow-black/5 shadow transition-shadow'>
+              shadow-black/5 transition-shadow'>
                 Resume
               </motion.button>
 
@@ -195,15 +195,15 @@ export const NavHome = () => {
       ) : (
         <>
           <div
-            className={`fixed z-10 w-screen h-screen  ${
+            className={`${
               isOpen &&
-              'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30'
+              'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 fixed w-screen h-screen z-50'
             }`}>
             <motion.div
               className={`flex container justify-between py-2 fixed transition-shadow duration-500 
                 min-w-full px-5 z-20 ${
                   scrolledToTop === false
-                    ? 'backdrop-blur-sm bg-white/30 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
+                    ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/30 shadow-lg shadow-black/5 dark:shadow-black/20'
                     : 'shadow-none'
                 }`}
               initial={{ y: -200 }}
@@ -264,7 +264,7 @@ export const NavHome = () => {
                       to='/blog'
                       onClick={handleOnClick}
                       className='py-3 px-14 bg-btn rounded-xl hover:shadow-md dark:bg-white
-                      shadow-black/5 shadow transition-shadow text-white dark:text-background-inverted'>
+                      shadow-black/5 transition-shadow text-white dark:text-background-inverted'>
                       Blog
                     </Link>
                   </motion.div>
@@ -276,7 +276,7 @@ export const NavHome = () => {
                     className='absolute left-1/2 -ml-[75px] w-[150px] top-[450px] sm:top-[500px] flex justify-center'>
                     <button
                       className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white dark:text-background-inverted
-                      shadow-black/5 shadow transition-shadow dark:bg-white'>
+                      shadow-black/5 transition-shadow dark:bg-white'>
                       Resume {/* TODO: descarga CV */}
                     </button>
                   </motion.div>
@@ -290,6 +290,6 @@ export const NavHome = () => {
           </div>
         </>
       )}
-    </>
+    </header>
   );
 };
