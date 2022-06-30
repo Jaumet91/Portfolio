@@ -1,12 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  FaGhost,
-  FaRegComment,
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaGhost, FaRegComment } from 'react-icons/fa';
 import { AiOutlineExperiment } from 'react-icons/ai';
 import { BiMobileVibration } from 'react-icons/bi';
 import { motion, AnimatePresence, useCycle } from 'framer-motion';
@@ -14,13 +8,7 @@ import { motion, AnimatePresence, useCycle } from 'framer-motion';
 import { ThemeContext } from '../../utils';
 import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
-import {
-  desktopAvatarLight,
-  desktopAvatarLighHover,
-  desktopAvatarDark,
-  desktopAvatarDarkHover,
-} from '../../assets';
-import { NavToggler } from './';
+import { NavToggler, SocialIcons, Avatar } from './';
 
 const { navLinks } = config;
 
@@ -139,20 +127,7 @@ export const NavHome = () => {
             }}>
             <Link to='/' className='order-first' onClick={handleOnClick}>
               <div className='flex items-center ml-5'>
-                <img
-                  className='hover:opacity-0 absolute'
-                  src={
-                    theme === 'dark' ? desktopAvatarDark : desktopAvatarLight
-                  }
-                />
-                <img
-                  className='opacity-0 hover:opacity-100 z-10 transition-opacity'
-                  src={
-                    theme === 'dark'
-                      ? desktopAvatarDarkHover
-                      : desktopAvatarLighHover
-                  }
-                />
+                <Avatar theme={theme} />
                 <span className='ml-3 hidden lg:block dark:text-white'>
                   Jaime Cortes
                 </span>
@@ -241,20 +216,7 @@ export const NavHome = () => {
               }}>
               <Link to='/' className='order-first' onClick={handleOnClick}>
                 <div className='flex items-center'>
-                  <img
-                    className='active:opacity-0 absolute'
-                    src={
-                      theme === 'dark' ? desktopAvatarDark : desktopAvatarLight
-                    }
-                  />
-                  <img
-                    className='opacity-0 hover:opacity-100 z-10 transition-opacity'
-                    src={
-                      theme === 'dark'
-                        ? desktopAvatarDarkHover
-                        : desktopAvatarLighHover
-                    }
-                  />
+                  <Avatar theme={theme} />
                 </div>
               </Link>
               <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'}>
@@ -292,6 +254,7 @@ export const NavHome = () => {
                       className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
                     />
                   </div>
+
                   <motion.div
                     variants={btnAni}
                     whileHover='hover'
@@ -305,6 +268,7 @@ export const NavHome = () => {
                       Blog
                     </Link>
                   </motion.div>
+
                   <motion.div
                     variants={btnAni}
                     whileHover='hover'
@@ -316,29 +280,9 @@ export const NavHome = () => {
                       Resume {/* TODO: descarga CV */}
                     </button>
                   </motion.div>
-                  {/* TODO: enlaces redes sociales */}
+
                   <div className='absolute left-1/2 -ml-[75px] w-[150px] top-[620px] sm:top-[670px] flex justify-center'>
-                    <motion.div
-                      className='mx-3 cursor-pointer dark:text-white'
-                      variants={btnAni}
-                      whileHover='hover'
-                      whileTap='tap'>
-                      <FaGithub size={25} />
-                    </motion.div>
-                    <motion.div
-                      className='mx-3 cursor-pointer dark:text-white'
-                      variants={btnAni}
-                      whileHover='hover'
-                      whileTap='tap'>
-                      <FaLinkedin size={25} />
-                    </motion.div>
-                    <motion.div
-                      className='mx-3 cursor-pointer dark:text-white'
-                      variants={btnAni}
-                      whileHover='hover'
-                      whileTap='tap'>
-                      <FaTwitter size={25} />
-                    </motion.div>
+                    <SocialIcons btnAni={btnAni} size={25} />
                   </div>
                 </motion.div>
               </motion.nav>
