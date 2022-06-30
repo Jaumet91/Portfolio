@@ -14,6 +14,26 @@ const { navLinks } = config;
 
 const iconsMenu = [BiMobileVibration, AiOutlineExperiment, FaRegComment];
 
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: -5, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 const btnAni = {
   hover: { y: -3 },
   tap: { y: 0 },
@@ -25,7 +45,6 @@ const menuItemVariants = {
     opacity: 1,
     transition: {
       duration: 0.4,
-
       ease: [0.6, 0.05, -0.01, 0.9],
     },
   },
@@ -136,6 +155,9 @@ export const NavHome = () => {
 
             <div className='order-last hidden md:flex items-center dark:text-white'>
               <motion.ul
+                variants={container}
+                initial='hidden'
+                animate='visible'
                 className='grid grid-cols-3'
                 onHoverEnd={() => setActiveIndex(null)}>
                 {navLinks.map(({ url, name }, i) => {
@@ -143,6 +165,7 @@ export const NavHome = () => {
                   return (
                     <motion.li
                       key={i}
+                      variants={item}
                       className='flex justify-end'
                       onHoverStart={() => setActiveIndex(i)}>
                       <a

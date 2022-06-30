@@ -12,6 +12,16 @@ import iphoneSmallLight from './iphone-small-light.png';
 import iphoneSmallDark from './iphone-small-dark.png';
 import armClosedLight from './arm-crossed-light.png';
 import armClosedDark from './arm-crossed-dark.png';
+import reactLogoLight from './react-logo-light.png';
+import reactLogoDark from './react-logo-dark.png';
+import reactHoverLight from './react-hover-light.png';
+import reactHoverDark from './react-hover-dark.png';
+import bracketLogoLight from './bracket-logo-light.png';
+import bracketLogoDark from './bracket-logo-dark.png';
+import bracketHoverLight from './bracket-hover-light.png';
+import brackettHoverDark from './bracket-hover-dark.png';
+import threeDLight from './3d-light.png';
+import threeDDark from './3d-dark.png';
 
 export {
   desktopAvatarLight,
@@ -28,4 +38,14 @@ export {
   iphoneSmallLight,
   armClosedDark,
   armClosedLight,
+  reactHoverDark,
+  reactHoverLight,
+  reactLogoDark,
+  reactLogoLight,
+  bracketHoverLight,
+  bracketLogoDark,
+  bracketLogoLight,
+  brackettHoverDark,
+  threeDDark,
+  threeDLight,
 };

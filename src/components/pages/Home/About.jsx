@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
 
 import { ThemeContext } from '../../../utils';
 import {
@@ -13,9 +14,13 @@ export const About = () => {
   return (
     <>
       <section
-        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[300px] relative
+        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[200px] relative
         bg-secondary dark:bg-secondary-inverted py-20'>
-        <article
+        <motion.article
+          initial={{ y: 80, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ duration: 0.5, delay: 0 }}
           className='lg:grid lg:grid-cols-12 md:py-20 py-10 lg:py-0 md:px-12 sm:px-12 relative lg:z-0 z-10
                     px-6 rounded-3xl dark:bg-background-inverted lg:dark:bg-secondary-inverted
                   bg-white lg:bg-secondary'>
@@ -49,14 +54,21 @@ export const About = () => {
             junior dev position to finally kick start my career and learn among
             professionals.
           </div>
-        </article>
+        </motion.article>
         <div className='absolute right-0 -top-[220px] lg:hidden'>
           <img
             src={theme === 'dark' ? patternMeshDark : patternMeshLight}
             alt='vector-about'
           />
         </div>
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 1.8,
+          }}
           id='about'
           className='absolute lg:-top-[400px] sm:-top-[420px] -top-[315px] banner:left-10 lg:-left-10
             -left-20 lg:block lg:w-[500px]'>
@@ -64,8 +76,9 @@ export const About = () => {
             src={theme === 'dark' ? armClosedDark : armClosedLight}
             alt='vector-about'
           />
-        </div>
+        </motion.div>
       </section>
+      <section></section>
     </>
   );
 };

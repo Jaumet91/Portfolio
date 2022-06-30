@@ -25,22 +25,46 @@ export const Hero = () => {
       <section
         id='hero'
         className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] lg:pt-64 md:pt-60 pt-52 relative'>
-        <div className='absolute lg:right-[30px] lg:top-[170px] hidden lg:block'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 1.8,
+          }}
+          className='absolute lg:right-[30px] lg:top-[170px] hidden lg:block'>
           <img
             src={theme === 'dark' ? vectorStairsDark : vectorStairsLight}
             alt='vector-about'
           />
-        </div>
+        </motion.div>
 
         <div
-          className='md:grid sm:grid-cols-12 md:gap-x-2 md:gap-y-10 bg-secondary sm:rounded-3xl
+          className='md:grid sm:grid-cols-12 md:gap-x-2 bg-secondary sm:rounded-3xl
            md:py-20 py-10 md:px-0 sm:px-12 px-6 dark:text-white dark:bg-secondary-inverted'>
-          <div className='md:col-start-2 md:col-span-10'>
-            <h1 className='font-extrabold big-heading md:mb-0 mb-10'>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 0.8,
+            }}
+            className='md:col-start-2 md:col-span-10'>
+            <h1 className='font-extrabold big-heading mb-10'>
               I build things for the web.
             </h1>
-          </div>
-          <div className='md:col-start-2 md:col-span-10 z-10 md:mb-0 mb-10'>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 1,
+            }}
+            className='md:col-start-2 md:col-span-10 z-10 mb-12'>
             <div className='leading-relaxed'>
               Hi, my name is Jaime Cortes and {"I'm"} a electronic engineer
               specializing in building exceptional digital experiences. {"I've"}{' '}
@@ -48,8 +72,16 @@ export const Hero = () => {
               my passion and curiosity for understanding videogames and digital
               media.
             </div>
-          </div>
-          <div className='flex justify-center md:block md:col-start-2 '>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 1.2,
+            }}
+            className='flex justify-center md:block md:col-start-2 '>
             <motion.button
               variants={btnAni}
               whileHover='hover'
@@ -59,36 +91,68 @@ export const Hero = () => {
             dark:bg-white justify-center'>
               <a href='#contact'>{"Let's"} book a call</a>
             </motion.button>
-          </div>
+          </motion.div>
         </div>
 
-        <div className='absolute banner:right-[80px] right-[40px] top-[600px] hidden lg:block z-10'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 1.8,
+          }}
+          className='absolute banner:right-[80px] right-[40px] top-[600px] hidden lg:block z-10'>
           <img
             src={theme === 'dark' ? iphoneDeskDark : iphoneDeskLight}
             alt='iphone-image'
           />
-        </div>
+        </motion.div>
 
-        <div className='flex justify-center lg:hidden z-50 py-40 px-6'>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.6,
+            delay: 1.6,
+          }}
+          className='flex justify-center lg:hidden z-50 py-40 px-6'>
           <img
             src={theme === 'dark' ? iphoneSmallDark : iphoneSmallLight}
             alt='iphone-image'
           />
-        </div>
+        </motion.div>
 
-        <div className='absolute lg:left-[0px] lg:top-[800px] hidden lg:block'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 1.8,
+          }}
+          className='absolute lg:left-[0px] lg:top-[800px] hidden lg:block'>
           <img
             src={theme === 'dark' ? patternMeshDark : patternMeshLight}
             alt='vector-about'
           />
-        </div>
+        </motion.div>
 
-        <div className='absolute lg:left-[450px] right-[calc(50%_-_30px)] lg:top-[980px] top-[100px] rotate-45 block'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0, rotate: 45 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 1.8,
+          }}
+          className='absolute lg:left-[450px] right-[calc(50%_-_30px)] lg:top-[980px] top-[100px] block'>
           <img
             src={theme === 'dark' ? vectorStairsDark : vectorStairsLight}
             alt='vector-about'
           />
-        </div>
+        </motion.div>
       </section>
     </>
   );

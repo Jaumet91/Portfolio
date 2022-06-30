@@ -1,26 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const getInitialTheme = () => {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    const storedPrefs = window.localStorage.getItem('color-theme');
-    if (typeof storedPrefs === 'string') {
-      return storedPrefs;
-    }
-
-    const userMedia = window.matchMedia('(prefers-color-scheme: dark)');
-    if (userMedia.matches) {
-      return 'dark';
-    }
-  }
-
-  return 'light'; // dark theme as the default;
-};
-
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState(
+    window.localStorage.getItem('color-theme')
+  );
 
   const rawSetTheme = rawTheme => {
     const root = window.document.documentElement;
