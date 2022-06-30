@@ -14,7 +14,7 @@ const getInitialTheme = () => {
     }
   }
 
-  return 'light'; // light theme as the default;
+  return 'light'; // dark theme as the default;
 };
 
 export const ThemeContext = createContext();

@@ -19,6 +19,7 @@ module.exports = {
       },
       screens: {
         md: '875px',
+        banner: '1078px',
       },
     },
   },

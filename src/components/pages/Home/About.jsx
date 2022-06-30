@@ -1,74 +1,67 @@
 import { useContext } from 'react';
 
 import { ThemeContext } from '../../../utils';
-import { motion } from 'framer-motion';
 import {
+  armClosedDark,
+  armClosedLight,
   patternMeshDark,
-  vectorStairsDark,
   patternMeshLight,
-  vectorStairsLight,
 } from '../../../assets';
-
-const btnAni = {
-  hover: { y: -3 },
-  tap: { y: 0 },
-};
 
 export const About = () => {
   const { theme } = useContext(ThemeContext);
-
   return (
     <>
       <section
-        id='about'
-        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] lg:pt-64 md:pt-60 pt-52 relative'>
-        <div className='absolute lg:right-[30px] lg:top-[170px] block'>
-          <img
-            src={theme === 'dark' ? vectorStairsDark : vectorStairsLight}
-            alt='vector-about'
-          />
-        </div>
-
-        <div
-          className='md:grid sm:grid-cols-12 md:gap-x-2 md:gap-y-10 bg-secondary sm:rounded-3xl
-           md:py-20 py-10 md:px-0 sm:px-12 px-6 dark:text-white dark:bg-secondary-inverted'>
-          <div className='md:col-start-2 md:col-span-10'>
-            <div className='font-extrabold big-heading md:mb-0 mb-10'>
-              I build things for the web.
-            </div>
+        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[300px] relative
+        bg-secondary dark:bg-secondary-inverted py-20'>
+        <article
+          className='lg:grid lg:grid-cols-12 md:py-20 py-10 lg:py-0 md:px-12 sm:px-12 relative lg:z-0 z-10
+                    px-6 rounded-3xl dark:bg-background-inverted lg:dark:bg-secondary-inverted
+                  bg-white lg:bg-secondary'>
+          <div
+            className='flex justify-center lg:block lg:col-span-8 lg:col-start-5 lg:bg-white
+                 dark:lg:bg-background-inverted lg:rounded-t-3xl lg:pt-10 '>
+            <span className='dark:text-primary-inverted text-primary lg:px-16 '>
+              Who I am
+            </span>
           </div>
-          <div className='md:col-start-2 md:col-span-10 z-10 md:mb-0 mb-10'>
-            <div className='leading-relaxed'>
-              Hi, my name is Jaime Cortes and {"I'm"} a electronic engineer
-              specializing in building exceptional digital experiences. {"I've"}{' '}
-              entered the world of web development in March 2022, motivated by
-              my passion and curiosity for understanding videogames and digital
-              media.
-            </div>
+          <div
+            className='flex justify-center lg:block lg:col-span-8 lg:col-start-5
+              lg:bg-white dark:lg:bg-background-inverted '>
+            <h2 className='dark:text-white font-bold md:text-[34px] text-2xl pt-3 lg:px-16 justify-center'>
+              About me
+            </h2>
           </div>
-          <div className='flex justify-center md:block md:col-start-2 '>
-            <motion.button
-              variants={btnAni}
-              whileHover='hover'
-              whileTap='tap'
-              className='px-2 py-3 sm:w-[200px] w-[195px] rounded-xl bg-btn hover:shadow-md
-            text-white dark:text-background-inverted hover:shadow-black/30 transition-shadow 
-            dark:bg-white justify-center'>
-              {"Let's"} book a call
-            </motion.button>
+          <div
+            className='lg:col-start-5 lg:col-span-8 pt-6 lg:bg-white dark:lg:bg-background-inverted
+            dark:text-white lg:px-16 col-span-full'>
+            Hello, {"I'm"} Jaime Cortes a electronic engenieer based in Spain. I
+            develop websites with MERN stack and design them with softwares like
+            Figma. {"I'm"} also learning the techonology behind web 3.0.
           </div>
-        </div>
-
-        <div className='absolute lg:left-[0px] lg:top-[800px] block'>
+          <div
+            className='lg:col-start-5 lg:col-span-8 pt-6 lg:bg-white dark:lg:bg-background-inverted
+            dark:text-white lg:px-16 rounded-b-3xl col-span-full lg:pb-10'>
+            A few months ago {"I've"}discovered my passion for the world of web
+            development and the beauty behind building useful websites like the
+            one you will find in this portfolio. {"I'm"} now looking for a
+            junior dev position to finally kick start my career and learn among
+            professionals.
+          </div>
+        </article>
+        <div className='absolute right-0 -top-[220px] lg:hidden'>
           <img
             src={theme === 'dark' ? patternMeshDark : patternMeshLight}
             alt='vector-about'
           />
         </div>
-
-        <div className='absolute lg:right-[720px] lg:top-[850px] rotate-45 block'>
+        <div
+          id='about'
+          className='absolute lg:-top-[400px] sm:-top-[420px] -top-[315px] banner:left-10 lg:-left-10
+            -left-20 lg:block lg:w-[500px]'>
           <img
-            src={theme === 'dark' ? vectorStairsDark : vectorStairsLight}
+            src={theme === 'dark' ? armClosedDark : armClosedLight}
             alt='vector-about'
           />
         </div>

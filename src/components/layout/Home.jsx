@@ -1,4 +1,4 @@
-import { About, Projects, Contact } from '../pages/Home';
+import { About, Projects, Contact, Hero } from '../pages/Home';
 import { NavHome } from '../nav';
 
 export const Home = () => {
@@ -6,6 +6,7 @@ export const Home = () => {
     <>
       <NavHome />
       <main className='dark:bg-background-inverted bg-white transition-colors'>
+        <Hero />
         <About />
         <Projects />
         <Contact />

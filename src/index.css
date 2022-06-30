@@ -11,6 +11,7 @@
     margin: 0;
     font-size: clamp(40px, 5.6vw, 60px);
   }
+
 }
 
 @layer utilities {
