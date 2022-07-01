@@ -237,7 +237,12 @@ export const NavHome = () => {
                 ease: [0.6, 0.01, -0.05, 0.95],
                 duration: scrollDirection === 'up' ? 0.35 : 0.6,
               }}>
-              <Link to='/' className='order-first' onClick={handleOnClick}>
+              <span
+                className={`${isOpen && 'fixed w-screen h-screen z-10'}`}
+                onClick={() => {
+                  isOpen && toggleOpen();
+                }}></span>
+              <Link to='/' className='order-first z-20' onClick={handleOnClick}>
                 <div className='flex items-center'>
                   <Avatar theme={theme} />
                 </div>

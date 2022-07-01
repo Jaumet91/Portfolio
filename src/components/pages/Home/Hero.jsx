@@ -117,7 +117,7 @@ export const Hero = () => {
             duration: 0.6,
             delay: 1.6,
           }}
-          className='flex justify-center lg:hidden z-50 py-40 px-6'>
+          className='flex justify-center lg:hidden z-50 pb-20 pt-52 px-6'>
           <img
             src={theme === 'dark' ? iphoneSmallDark : iphoneSmallLight}
             alt='iphone-image'

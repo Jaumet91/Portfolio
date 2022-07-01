@@ -7,6 +7,8 @@ import {
   armClosedLight,
   patternMeshDark,
   patternMeshLight,
+  vectorStairsDark,
+  vectorStairsLight,
   reactLogoDark,
   reactLogoLight,
   reactHover,
@@ -25,7 +27,7 @@ export const About = () => {
   return (
     <>
       <section
-        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[200px] relative
+        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[400px] relative
         bg-secondary dark:bg-secondary-inverted py-20'>
         <motion.article
           initial={{ y: 80, opacity: 0 }}
@@ -66,7 +68,7 @@ export const About = () => {
             professionals.
           </div>
         </motion.article>
-        <div className='absolute right-0 -top-[220px] lg:hidden'>
+        <div className='absolute right-0 -top-[300px] lg:hidden'>
           <img
             src={theme === 'dark' ? patternMeshDark : patternMeshLight}
             alt='vector-about'
@@ -89,12 +91,20 @@ export const About = () => {
           />
         </motion.div>
       </section>
-      <section className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[100px] relative'>
-        <div
-          className=''
+
+      <section
+        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[100px] mt-[100px]
+                relative flex-col justify-items-center lg:grid lg:grid-rows-4 lg:grid-flow-col
+                lg:place-content-center lg:place-items-center lg:gap-x-4'>
+        <motion.div
+          className='max-w-[540px] mx-auto lg:row-span-2'
+          initial={{ y: 80, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0 }}
           onMouseEnter={() => setIsShownHoverReactLogo(true)}
           onMouseLeave={() => setIsShownHoverReactLogo(false)}>
-          <div className='flex justify-center mb-8'>
+          <div className='flex justify-center lg:justify-start lg:px-3 mb-8'>
             <img
               className='absolute'
               src={theme === 'dark' ? reactLogoDark : reactLogoLight}
@@ -108,7 +118,7 @@ export const About = () => {
               alt='vector-about'
             />
           </div>
-          <div className='flex justify-center mb-6'>
+          <div className='flex justify-center mb-6 lg:justify-start lg:px-3'>
             <h2 className='dark:text-white font-bold md:text-[34px] text-2xl justify-center'>
               Product Design
             </h2>
@@ -124,13 +134,17 @@ export const About = () => {
                 ? 'bg-[#00ADFD]'
                 : 'bg-secondary dark:bg-primary-inverted'
             } block w-full h-[5px] rounded-b-3xl transition-colors`}></span>
-        </div>
+        </motion.div>
 
-        <div
-          className='mt-[100px]'
+        <motion.div
+          className='mt-[100px] lg:mt-[50px] max-w-[540px] mx-auto lg:row-span-2'
+          initial={{ y: 80, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0 }}
           onMouseEnter={() => setIsShownHoverBracketLogo(true)}
           onMouseLeave={() => setIsShownHoverBracketLogo(false)}>
-          <div className='flex justify-center mb-8'>
+          <div className='flex justify-center mb-8 lg:justify-start lg:px-3'>
             <img
               className='absolute'
               src={theme === 'dark' ? bracketLogoDark : bracketLogoLight}
@@ -144,7 +158,7 @@ export const About = () => {
               alt='vector-about'
             />
           </div>
-          <div className='flex justify-center mb-6'>
+          <div className='flex justify-center mb-6 lg:justify-start lg:px-3'>
             <h2 className='dark:text-white font-bold md:text-[34px] text-2xl justify-center'>
               Website Development
             </h2>
@@ -160,13 +174,20 @@ export const About = () => {
                 ? 'bg-[#E62074]'
                 : 'bg-secondary dark:bg-primary-inverted'
             } block w-full h-[5px] rounded-b-3xl transition-colors`}></span>
-        </div>
+        </motion.div>
 
-        <div className='mt-[100px]'>
+        <div className='mt-[100px] sm:mt-[200px] lg:mt-0 lg:row-span-4'>
           <img src={theme === 'dark' ? threeDDark : threeDLight} />
         </div>
 
-        <div className='absolute right-0 -bottom-[150px] lg:hidden'>
+        <div className='hidden sm:block absolute left-[100px] lg:left-[700px] lg:bottom-[680px] bottom-[600px] rotate-90'>
+          <img
+            src={theme === 'dark' ? vectorStairsDark : vectorStairsLight}
+            alt='vector-about'
+          />
+        </div>
+
+        <div className='absolute right-0 -bottom-[150px] lg:-bottom-[100px]'>
           <img
             src={theme === 'dark' ? patternMeshDark : patternMeshLight}
             alt='vector-about'
