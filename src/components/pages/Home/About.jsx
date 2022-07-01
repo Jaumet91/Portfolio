@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { ThemeContext } from '../../../utils';
@@ -7,10 +7,21 @@ import {
   armClosedLight,
   patternMeshDark,
   patternMeshLight,
+  reactLogoDark,
+  reactLogoLight,
+  reactHover,
+  bracketLogoDark,
+  bracketLogoLight,
+  bracketHover,
+  threeDDark,
+  threeDLight,
 } from '../../../assets';
 
 export const About = () => {
   const { theme } = useContext(ThemeContext);
+  const [isShownHoverReactLogo, setIsShownHoverReactLogo] = useState(false);
+  const [isShownHoverBracketLogo, setIsShownHoverBracketLogo] = useState(false);
+
   return (
     <>
       <section
@@ -78,7 +89,90 @@ export const About = () => {
           />
         </motion.div>
       </section>
-      <section></section>
+      <section className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[570px] mt-[100px] relative'>
+        <div
+          className=''
+          onMouseEnter={() => setIsShownHoverReactLogo(true)}
+          onMouseLeave={() => setIsShownHoverReactLogo(false)}>
+          <div className='flex justify-center mb-8'>
+            <img
+              className='absolute'
+              src={theme === 'dark' ? reactLogoDark : reactLogoLight}
+              alt='vector-about'
+            />
+            <img
+              className={`${
+                isShownHoverReactLogo ? 'opacity-100' : ''
+              } opacity-0  z-10 transition-opacity`}
+              src={reactHover}
+              alt='vector-about'
+            />
+          </div>
+          <div className='flex justify-center mb-6'>
+            <h2 className='dark:text-white font-bold md:text-[34px] text-2xl justify-center'>
+              Product Design
+            </h2>
+          </div>
+          <div className='dark:text-white mb-6 px-3'>
+            I work with certain design tools to create high-fidelity designs and
+            prototypes. I design accessible and usable products which aid
+            business growth.
+          </div>
+          <span
+            className={`${
+              isShownHoverReactLogo
+                ? 'bg-[#00ADFD]'
+                : 'bg-secondary dark:bg-primary-inverted'
+            } block w-full h-[5px] rounded-b-3xl transition-colors`}></span>
+        </div>
+
+        <div
+          className='mt-[100px]'
+          onMouseEnter={() => setIsShownHoverBracketLogo(true)}
+          onMouseLeave={() => setIsShownHoverBracketLogo(false)}>
+          <div className='flex justify-center mb-8'>
+            <img
+              className='absolute'
+              src={theme === 'dark' ? bracketLogoDark : bracketLogoLight}
+              alt='vector-about'
+            />
+            <img
+              className={`${
+                isShownHoverBracketLogo ? 'opacity-100' : ''
+              } opacity-0  z-10 transition-opacity`}
+              src={bracketHover}
+              alt='vector-about'
+            />
+          </div>
+          <div className='flex justify-center mb-6'>
+            <h2 className='dark:text-white font-bold md:text-[34px] text-2xl justify-center'>
+              Website Development
+            </h2>
+          </div>
+          <div className='dark:text-white mb-6 px-3'>
+            I use various web technologies to develop attractive websites which
+            converts visitors to customers. I develop creative and responsive
+            website layouts.
+          </div>
+          <span
+            className={`${
+              isShownHoverBracketLogo
+                ? 'bg-[#E62074]'
+                : 'bg-secondary dark:bg-primary-inverted'
+            } block w-full h-[5px] rounded-b-3xl transition-colors`}></span>
+        </div>
+
+        <div className='mt-[100px]'>
+          <img src={theme === 'dark' ? threeDDark : threeDLight} />
+        </div>
+
+        <div className='absolute right-0 -bottom-[150px] lg:hidden'>
+          <img
+            src={theme === 'dark' ? patternMeshDark : patternMeshLight}
+            alt='vector-about'
+          />
+        </div>
+      </section>
     </>
   );
 };
