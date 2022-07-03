@@ -6,20 +6,25 @@ import patternMeshDark from './pattern-mesh-dark.svg';
 import vectorStairsDark from './vector-stairs-dark.svg';
 import patternMeshLight from './pattern-mesh-light.svg';
 import vectorStairsLight from './vector-stairs-light.svg';
-import iphoneDeskDark from './iphone-desktop-dark.png';
-import iphoneDeskLight from './iphone-desktop-light.png';
-import iphoneSmallLight from './iphone-small-light.png';
-import iphoneSmallDark from './iphone-small-dark.png';
 import armClosedLight from './arm-crossed-light.png';
 import armClosedDark from './arm-crossed-dark.png';
-import reactLogoLight from './react-logo-light.png';
-import reactLogoDark from './react-logo-dark.png';
-import reactHover from './react-hover.png';
-import bracketLogoLight from './bracket-logo-light.png';
-import bracketLogoDark from './bracket-logo-dark.png';
-import bracketHover from './bracket-hover.png';
 import threeDLight from './3d-light.png';
 import threeDDark from './3d-dark.png';
+import locationIconLight from './location-icon-light.png';
+import locationIconDark from './location-icon-dark.png';
+import phoneIconLight from './phone-icon-light.png';
+import phoneIconDark from './phone-icon-dark.png';
+import emailIconLight from './email-icon-light.png';
+import emailIconDark from './email-icon-dark.png';
+import workingLight from './working-light.png';
+import workingDark from './working-dark.png';
+import imageOneLight from './image-1-light.png';
+import imageTwoLight from './image-2-light.png';
+import imageThreeLight from './image-3-light.png';
+import imageOneDark from './image-1-dark.png';
+import imageTwoDark from './image-2-dark.png';
+import imageThreeDark from './image-3-dark.png';
+import iphoneFrame from './iphone-frame.png';
 
 export {
   desktopAvatarLight,
@@ -30,18 +35,20 @@ export {
   vectorStairsDark,
   patternMeshLight,
   vectorStairsLight,
-  iphoneDeskDark,
-  iphoneDeskLight,
-  iphoneSmallDark,
-  iphoneSmallLight,
   armClosedDark,
   armClosedLight,
-  reactHover,
-  reactLogoDark,
-  reactLogoLight,
-  bracketLogoDark,
-  bracketLogoLight,
-  bracketHover,
   threeDDark,
   threeDLight,
+  locationIconDark,
+  locationIconLight,
+  phoneIconDark,
+  phoneIconLight,
+  emailIconLight,
+  workingDark,
+  workingLight,
+  emailIconDark,
+  iphoneFrame,
 };
+
+export const imagesLight = [imageOneLight, imageTwoLight, imageThreeLight];
+export const imagesDark = [imageOneDark, imageTwoDark, imageThreeDark];

@@ -1,5 +1,4 @@
-export * from './NavHome';
-export * from './NavBlog';
+export * from './Navbar';
 export * from './NavToggler';
 export * from './SocialIcons';
 export * from './Avatar';

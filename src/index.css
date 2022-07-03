@@ -4,12 +4,12 @@
 
 @layer components {
   .background {
-    @apply bg-hover-1 dark:bg-secondary-inverted fixed top-0 right-0 bottom-0 w-[300px] h-[2000px] z-30 drop-shadow-xl;
+    @apply bg-hover-1 dark:bg-secondary-inverted fixed top-0 right-0 bottom-0 w-[300px] min-h-screen z-30 drop-shadow-xl;
   }
 
   .big-heading {
     margin: 0;
-    font-size: clamp(40px, 5.6vw, 60px);
+    font-size: clamp(40px, 8vw, 60px);
   }
 
 }

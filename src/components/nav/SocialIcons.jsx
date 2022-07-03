@@ -7,21 +7,21 @@ export const SocialIcons = ({ btnAni, size }) => {
   return (
     <>
       <motion.div
-        className='mx-3 cursor-pointer dark:text-white'
+        className='mx-3 cursor-pointer dark:text-white text-light-black'
         variants={btnAni}
         whileHover='hover'
         whileTap='tap'>
         <FaGithub size={size} />
       </motion.div>
       <motion.div
-        className='mx-3 cursor-pointer dark:text-white'
+        className='mx-3 cursor-pointer dark:text-white text-light-black'
         variants={btnAni}
         whileHover='hover'
         whileTap='tap'>
         <FaLinkedin size={size} />
       </motion.div>
       <motion.div
-        className='mx-3 cursor-pointer dark:text-white'
+        className='mx-3 cursor-pointer dark:text-white text-light-black'
         variants={btnAni}
         whileHover='hover'
         whileTap='tap'>
