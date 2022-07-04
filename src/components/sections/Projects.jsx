@@ -16,38 +16,47 @@ const imageAnimate = {
 
 export const Projects = () => {
   return (
-    <>
-      <section
-        id='projects'
-        className='max-w-[1440px] mx-auto lg:px-[100px] sm:px-[40px] px-6 lg:mt-[240px] mt-[300px]
-        bg-secondary dark:bg-secondary-inverted py-20 2xl:rounded-3xl z-0'>
-        <div className='flex justify-center lg:bg-secondary dark:lg:bg-secondary-inverted '>
-          <h2 className='dark:text-white font-bold md:text-[34px] text-2xl pt-3 lg:px-16 mb-20'>
-            My Portfolio
-          </h2>
+    <section
+      id='projects'
+      className='max-w-[1000px] mx-auto py-16 sm:py-20 md:py-24'>
+      <motion.div
+        initial={{ y: 80, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5, delay: 0 }}>
+        <div>
+          <span className='dark:text-primary-inverted text-primary pb-3'>
+            My portfolio
+          </span>
         </div>
+        <div className='flex justify-start items-center mt-2 mb-10'>
+          <h2 className='dark:text-white text-light-black font-bold md:text-[34px] text-2xl shrink-0'>
+            Projects
+          </h2>
+          <span className='w-full sm:w-[300px] h-[1px] bg-slate-400 dark:bg-slate-600 ml-3 mt-1 rounded-3xl'></span>
+        </div>
+      </motion.div>
 
-        <motion.article
-          initial={'offscreen'}
-          whileInView={'onscreen'}
-          // once:false se repite siempre que se pase por el viewport
-          // amount: 1 Toda la carta tiene que pasar para que se active la animacion
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.2 }}
-          className='sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-5'>
-          {projects.map((project, i) => (
-            <motion.div key={project.id} variants={imageAnimate}>
-              <ProjectsList
-                title={project.title}
-                desc={project.description}
-                tags={project.tags}
-                site={project.urlSite}
-                code={project.urlCode}
-              />
-            </motion.div>
-          ))}
-        </motion.article>
-      </section>
-    </>
+      <motion.div
+        initial={'offscreen'}
+        whileInView={'onscreen'}
+        // once:false se repite siempre que se pase por el viewport
+        // amount: 1 Toda la carta tiene que pasar para que se active la animacion
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.2 }}
+        className='sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-5 my-12'>
+        {projects.map((project, i) => (
+          <motion.div key={project.id} variants={imageAnimate}>
+            <ProjectsList
+              title={project.title}
+              desc={project.description}
+              tags={project.tags}
+              site={project.urlSite}
+              code={project.urlCode}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
   );
 };

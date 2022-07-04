@@ -6,7 +6,7 @@ export const Home = () => {
     <>
       <Navbar />
       <main
-        className='dark:bg-background-inverted mx-auto xl:px-40 lg:px-24 md:px-12 px-6 bg-white transition-colors
+        className='dark:bg-background-inverted mx-auto lg:px-40 md:px-24 sm:px-12 px-6 bg-white transition-colors
        flex-col min-h-screen'>
         <Hero />
         <About />

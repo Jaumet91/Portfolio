@@ -1,8 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGhost, FaRegComment } from 'react-icons/fa';
-import { AiOutlineExperiment } from 'react-icons/ai';
-import { BiMobileVibration } from 'react-icons/bi';
+import { FaGhost } from 'react-icons/fa';
+import {
+  AiOutlineExperiment,
+  AiOutlineShake,
+  AiOutlineCoffee,
+} from 'react-icons/ai';
+import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { motion, useCycle } from 'framer-motion';
 
 import { ThemeContext } from '../../utils';
@@ -10,9 +14,10 @@ import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
 import { NavToggler, SocialIcons, Avatar } from '.';
 
-const { navLinks } = config;
+const { navLinks, socialMedia } = config;
 
-const iconsMenu = [BiMobileVibration, AiOutlineExperiment, FaRegComment];
+const iconsMenu = [AiOutlineCoffee, AiOutlineExperiment, AiOutlineShake];
+const iconsFixed = [FiGithub, FiTwitter, FiLinkedin];
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -92,7 +97,7 @@ export const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 875;
+  const breakpoint = 767;
 
   if (isOpen) {
     document.body.style.overflow = 'hidden';
@@ -128,91 +133,135 @@ export const Navbar = () => {
   return (
     <header>
       {width > breakpoint ? (
-        <motion.nav
-          className={`flex container justify-between py-2 fixed transition-shadow duration-500 z-50
-              min-w-full px-20 ${
-                scrolledToTop === false
-                  ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/70 shadow-lg shadow-black/5 dark:shadow-black/20'
-                  : 'shadow-none'
-              }`}
-          initial={{ y: -200 }}
-          animate={{
-            y: scrolledToTop || scrollDirection === 'up' ? 0 : -200,
-          }}
-          transition={{
-            ease: [0.6, 0.01, -0.05, 0.95],
-            duration: scrollDirection === 'up' ? 0.35 : 0.6,
-          }}>
-          <Link to='/' className='order-first' onClick={handleOnClick}>
-            <div className='flex items-center ml-5'>
-              <Avatar theme={theme} />
-              <span className='ml-3 hidden lg:block dark:text-white text-light-black'>
-                Jaime Cortes
-              </span>
-            </div>
-          </Link>
-
-          <div className='order-last hidden md:flex items-center dark:text-white text-light-black'>
-            <motion.ul
-              variants={container}
-              initial='hidden'
-              animate='visible'
-              className='grid grid-cols-3'
-              onHoverEnd={() => setActiveIndex(null)}>
-              {navLinks.map(({ url, name }, i) => {
-                const isActive = i === activeIndex;
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 2.2,
+            }}
+            className='fixed hidden md:block md:left-[20px] lg:left-[40px] w-[40px] bottom-0 z-10'>
+            <ul className='flex-col items-center m-0 p-0 dark:text-slate-300 text-light-black mb-5'>
+              {socialMedia.map(({ url, name }, i) => {
+                const Icon = iconsFixed[i];
                 return (
                   <motion.li
-                    key={i}
-                    variants={item}
-                    className='flex justify-end'
-                    onHoverStart={() => setActiveIndex(i)}>
+                    whileHover={{ y: -3 }}
+                    key={name}
+                    className='grid place-content-center'>
                     <a
-                      className='px-5 py-2 mx-2 inline-block relative'
-                      href={url}>
-                      {isActive ? (
-                        <motion.span
-                          layoutId='shadow'
-                          className='absolute inset-0 dark:bg-[#191c23] bg-primary rounded-lg -z-10'
-                        />
-                      ) : null}
-                      <span>{name}</span>
+                      href={url}
+                      className='p-3'
+                      target='_blank'
+                      rel='noopener noreferrer'>
+                      <Icon
+                        size={20}
+                        className='hover:text-primary dark:hover:text-purple-600'
+                      />
                     </a>
                   </motion.li>
                 );
               })}
-            </motion.ul>
+            </ul>
+            <span className='hidden md:block h-20 w-[1px] m-auto dark:bg-slate-300 bg-light-black'></span>
+          </motion.div>
 
-            {/* <motion.div variants={btnAni} whileHover='hover' whileTap='tap'>
-                <Link
-                  to='/blog'
-                  onClick={handleOnClick}
-                  className='py-2.5 px-6 mx-2 bg-secondary dark:bg-secondary-inverted rounded-lg hover:shadow-md
-               shadow-black/5 transition-shadow'>
-                  Blog
-                </Link>
-              </motion.div> */}
-
-            <motion.button
-              variants={btnAni}
-              whileHover='hover'
-              whileTap='tap'
-              className='px-6 py-2 rounded-lg ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
-              shadow-black/5 transition-shadow'>
-              Resume
-            </motion.button>
-
-            <div
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className='hover:bg-hover-1 dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
-                  transition-colors ml-3'>
-              <FaGhost
-                size={37}
-                className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
-              />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 2.2,
+            }}
+            className='fixed hidden md:block right-[20px] lg:right-[40px] w-[40px] bottom-0 z-10 vertical-r 
+            text-light-black dark:text-slate-300 font-extralight tracking-widest'>
+            <div className='flex items-center relative'>
+              <motion.a
+                whileHover={{ y: -3 }}
+                href='mailto:jacofu91@gmail.com'
+                className='mx-[20px] my-auto mb-5 text-xs hover:text-primary dark:hover:text-purple-500'>
+                jacofu91@gmail.com
+              </motion.a>
+              <span className='hidden md:block h-20 w-[1px] m-auto dark:bg-slate-300 bg-light-black'></span>
             </div>
-          </div>
-        </motion.nav>
+          </motion.div>
+
+          <motion.nav
+            className={`flex container justify-between py-2 fixed transition-shadow duration-500 z-50
+              min-w-full px-5 ${
+                scrolledToTop === false
+                  ? 'backdrop-blur-md bg-white/70 dark:bg-background-inverted/70 shadow-lg shadow-black/5 dark:shadow-black/20'
+                  : 'shadow-none'
+              }`}
+            initial={{ y: -200 }}
+            animate={{
+              y: scrolledToTop || scrollDirection === 'up' ? 0 : -200,
+            }}
+            transition={{
+              ease: [0.6, 0.01, -0.05, 0.95],
+              duration: scrollDirection === 'up' ? 0.35 : 0.6,
+            }}>
+            <Link to='/' className='order-first' onClick={handleOnClick}>
+              <div className='flex items-center ml-5'>
+                <Avatar theme={theme} />
+              </div>
+            </Link>
+
+            <div className='order-last hidden md:flex items-center dark:text-white text-light-black'>
+              <motion.ul
+                variants={container}
+                initial='hidden'
+                animate='visible'
+                className='grid grid-cols-3'
+                onHoverEnd={() => setActiveIndex(null)}>
+                {navLinks.map(({ url, name }, i) => {
+                  const isActive = i === activeIndex;
+                  return (
+                    <motion.li
+                      key={i}
+                      variants={item}
+                      className='flex justify-end'
+                      onHoverStart={() => setActiveIndex(i)}>
+                      <a
+                        className='px-5 py-2 mx-2 inline-block relative'
+                        href={url}>
+                        {isActive ? (
+                          <motion.span
+                            layoutId='shadow'
+                            className='absolute inset-0 dark:bg-[#191c23] bg-primary rounded-lg -z-10'
+                          />
+                        ) : null}
+                        <span>{name}</span>
+                      </a>
+                    </motion.li>
+                  );
+                })}
+              </motion.ul>
+
+              <motion.button
+                variants={btnAni}
+                whileHover='hover'
+                whileTap='tap'
+                className='px-6 py-2 rounded-md ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
+              shadow-black/5 transition-shadow'>
+                Resume
+              </motion.button>
+
+              <div
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className='hover:bg-hover-1 dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
+                  transition-colors ml-3'>
+                <FaGhost
+                  size={37}
+                  className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
+                />
+              </div>
+            </div>
+          </motion.nav>
+        </>
       ) : (
         <>
           <div
@@ -289,27 +338,13 @@ export const Navbar = () => {
                     </motion.ul>
                   </div>
 
-                  {/* <motion.div
-                    variants={btnAni}
-                    whileHover='hover'
-                    whileTap='tap'
-                    className='absolute left-1/2 -ml-[75px] w-[150px] top-[520px] sm:top-[570px] flex justify-center'>
-                    <Link
-                      to='/blog'
-                      onClick={handleOnClick}
-                      className='py-3 px-14 bg-btn rounded-xl hover:shadow-md dark:bg-white
-                      shadow-black/5 transition-shadow text-white dark:text-background-inverted'>
-                      Blog
-                    </Link>
-                  </motion.div> */}
-
                   <motion.div
                     variants={btnAni}
                     whileHover='hover'
                     whileTap='tap'
                     className=' w-[150px] flex justify-center'>
                     <button
-                      className='px-11 py-3 rounded-xl bg-btn hover:shadow-md text-white dark:text-background-inverted
+                      className='px-11 py-3 rounded-md bg-btn hover:shadow-md text-white dark:text-background-inverted
                       shadow-black/5 transition-shadow dark:bg-white'>
                       Resume {/* TODO: descarga CV */}
                     </button>
