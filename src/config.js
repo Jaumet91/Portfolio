@@ -81,4 +81,39 @@ export const config = {
       urlCode: 'https://github.com/Jaumet91',
     },
   ],
+
+  skills: [
+    {
+      id:'React',
+      name:'React',
+      skill: '80',
+    },
+    {
+      id:'Tailwind',
+      name:'Tailwind',
+      skill: '80',
+    },
+    {
+      id:'Node.js',
+      name:'Node.js',
+      skill: '60',
+    },
+    {
+      id:'Express',
+      name:'Express',
+      skill: '60',
+    },
+    {
+      id:'Solidity',
+      name:'Solidity',
+      skill: '40',
+    },
+    {
+      id:'Figma',
+      name:'Figma',
+      skill: '50',
+    },
+    
+  ]
+
 };

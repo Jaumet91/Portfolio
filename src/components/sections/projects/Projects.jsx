@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
-import { config } from '../../config';
-import { ProjectsList } from '.';
+import { config } from '../../../config';
+import { ProjectsList } from './ProjectsList';
 
 const { projects } = config;
 
@@ -40,8 +40,6 @@ export const Projects = () => {
       <motion.div
         initial={'offscreen'}
         whileInView={'onscreen'}
-        // once:false se repite siempre que se pase por el viewport
-        // amount: 1 Toda la carta tiene que pasar para que se active la animacion
         viewport={{ once: true, amount: 0.2 }}
         transition={{ staggerChildren: 0.2 }}
         className='sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-5 my-12'>
@@ -53,6 +51,7 @@ export const Projects = () => {
               tags={project.tags}
               site={project.urlSite}
               code={project.urlCode}
+              i={i}
             />
           </motion.div>
         ))}

@@ -25,6 +25,11 @@ import imageOneDark from './image-1-dark.png';
 import imageTwoDark from './image-2-dark.png';
 import imageThreeDark from './image-3-dark.png';
 import iphoneFrame from './iphone-frame.png';
+import laptopLight from './laptop-light.png';
+import laptopDark from './laptop-dark.png';
+import calendarApp from './calendar-app.png';
+import journalApp from './journal-app.png';
+import prueba from './prueba.png';
 
 export {
   desktopAvatarLight,
@@ -48,6 +53,11 @@ export {
   workingLight,
   emailIconDark,
   iphoneFrame,
+  laptopLight,
+  laptopDark,
+  calendarApp,
+  journalApp,
+  prueba,
 };
 
 export const imagesLight = [imageOneLight, imageTwoLight, imageThreeLight];

@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGhost } from 'react-icons/fa';
 import {
   AiOutlineExperiment,
   AiOutlineShake,
   AiOutlineCoffee,
 } from 'react-icons/ai';
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { WiDaySunny, WiHorizon } from 'react-icons/wi';
 import { motion, useCycle } from 'framer-motion';
 
 import { ThemeContext } from '../../utils';
 import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
-import { NavToggler, SocialIcons, Avatar } from '.';
+import { NavToggler, Avatar } from './';
 
 const { navLinks, socialMedia } = config;
 
@@ -226,12 +226,12 @@ export const Navbar = () => {
                       className='flex justify-end'
                       onHoverStart={() => setActiveIndex(i)}>
                       <a
-                        className='px-5 py-2 mx-2 inline-block relative'
+                        className='px-6 py-3 mx-2 inline-block relative'
                         href={url}>
                         {isActive ? (
                           <motion.span
                             layoutId='shadow'
-                            className='absolute inset-0 dark:bg-[#191c23] bg-primary rounded-lg -z-10'
+                            className='absolute inset-0 dark:bg-[#191c23] bg-primary rounded-md -z-10'
                           />
                         ) : null}
                         <span>{name}</span>
@@ -245,19 +245,26 @@ export const Navbar = () => {
                 variants={btnAni}
                 whileHover='hover'
                 whileTap='tap'
-                className='px-6 py-2 rounded-md ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
+                className='px-6 py-3 rounded-md ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
               shadow-black/5 transition-shadow'>
                 Resume
               </motion.button>
 
               <div
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className='hover:bg-hover-1 dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
+                className='hover:bg-hover-1 dark:hover:bg-[#191c23] w-12 h-12 rounded-md place-content-center grid
                   transition-colors ml-3'>
-                <FaGhost
-                  size={37}
-                  className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
-                />
+                {theme === 'dark' ? (
+                  <WiDaySunny
+                    size={42}
+                    className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
+                  />
+                ) : (
+                  <WiHorizon
+                    size={42}
+                    className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
+                  />
+                )}
               </div>
             </div>
           </motion.nav>
@@ -307,12 +314,19 @@ export const Navbar = () => {
                     onClick={() =>
                       setTheme(theme === 'dark' ? 'light' : 'dark')
                     }
-                    className='hover:bg-[#E3E3E3] dark:hover:bg-[#191c23] w-10 h-10 rounded-md place-content-center grid
+                    className=' dark:bg-opacity-20 bg-opacity-5 bg-black w-12 h-12 rounded-md place-content-center grid
                       transition-colors ml-5 mt-5 absolute z-50'>
-                    <FaGhost
-                      size={37}
-                      className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
-                    />
+                    {theme === 'dark' ? (
+                      <WiDaySunny
+                        size={45}
+                        className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
+                      />
+                    ) : (
+                      <WiHorizon
+                        size={45}
+                        className=' text-toggle hover:text-hover-2 dark:hover:text-hover-inverted cursor-pointer transition-colors p-2'
+                      />
+                    )}
                   </div>
                   <div className='text-center'>
                     <motion.ul
@@ -344,15 +358,11 @@ export const Navbar = () => {
                     whileTap='tap'
                     className=' w-[150px] flex justify-center'>
                     <button
-                      className='px-11 py-3 rounded-md bg-btn hover:shadow-md text-white dark:text-background-inverted
+                      className='px-8 py-4 rounded-md bg-btn hover:shadow-md text-white dark:text-background-inverted
                       shadow-black/5 transition-shadow dark:bg-white'>
                       Resume {/* TODO: descarga CV */}
                     </button>
                   </motion.div>
-
-                  <div className='w-[150px] mt-14 flex justify-center'>
-                    <SocialIcons btnAni={btnAni} size={25} />
-                  </div>
                 </motion.div>
               </motion.nav>
             </motion.div>

@@ -16,6 +16,10 @@
     writing-mode: vertical-rl;
   }
 
+  .img-shadow {
+    filter: drop-shadow(-4px 12px 24px rgb(0, 0, 0, 0.2));
+  }
+
 
 }
 

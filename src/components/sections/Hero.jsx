@@ -1,10 +1,5 @@
 import { motion } from 'framer-motion';
 
-const btnAni = {
-  hover: { y: -3 },
-  tap: { y: 0 },
-};
-
 export const Hero = () => {
   return (
     <section
@@ -61,12 +56,12 @@ export const Hero = () => {
             delay: 1.4,
           }}
           className='mt-5'>
-          <div className='leading-relaxed dark:text-slate-300 text-light-black md:max-w-[540px]'>
+          <p className='leading-relaxed dark:text-slate-300 text-light-black md:max-w-[540px]'>
             {"I'm"} a electronic engineer specializing in building exceptional
             digital experiences. {"I've"} entered the world of web development
-            in March 2022, motivated by my passion and curiosity for
-            understanding videogames and digital media.
-          </div>
+            in March 2022, taken a deep interest in making websites the best
+            they can be for everyone using them.
+          </p>
         </motion.div>
 
         <motion.div
@@ -80,10 +75,9 @@ export const Hero = () => {
           className='mt-14'>
           <a href='#contact'>
             <motion.button
-              variants={btnAni}
-              whileHover='hover'
-              whileTap='tap'
-              className='px-2 py-3 sm:w-[200px] w-[195px] rounded-md bg-primary hover:shadow-md
+              whileHover={{ y: -3 }}
+              whileTap={{ y: 0 }}
+              className='px-8 py-4 sm:w-[200px] w-[195px] rounded-md bg-primary hover:shadow-md
                 dark:text-white hover:shadow-black/30 transition-shadow 
               dark:bg-primary-inverted justify-center text-light-black'>
               {"Let's"} book a call
