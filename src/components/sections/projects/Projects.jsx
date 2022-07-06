@@ -22,8 +22,8 @@ export const Projects = () => {
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0 }}
-        transition={{ duration: 0.5, delay: 0 }}>
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.2 }}>
         <div>
           <span className='dark:text-primary-inverted text-primary pb-3'>
             My portfolio

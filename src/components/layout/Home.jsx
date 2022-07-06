@@ -1,4 +1,4 @@
-import { About, Projects, Contact, Hero } from '../sections';
+import { About, Projects, Contact, Hero, Footer } from '../sections';
 import { Navbar } from '../nav';
 
 export const Home = () => {
@@ -13,6 +13,7 @@ export const Home = () => {
         <Projects />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 };

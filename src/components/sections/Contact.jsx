@@ -10,8 +10,8 @@ export const Contact = () => {
     <motion.section
       initial={{ y: 80, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0 }}
-      transition={{ duration: 0.5, delay: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       id='contact'
       className='max-w-[600px] pt-16 pb-28 sm:py-20 md:py-24 mx-auto relative'>
       <div>

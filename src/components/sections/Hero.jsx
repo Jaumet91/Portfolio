@@ -59,7 +59,7 @@ export const Hero = () => {
           <p className='leading-relaxed dark:text-slate-300 text-light-black md:max-w-[540px]'>
             {"I'm"} a electronic engineer specializing in building exceptional
             digital experiences. {"I've"} entered the world of web development
-            in March 2022, taken a deep interest in making websites the best
+            in April 2022, taken a deep interest in making websites the best
             they can be for everyone using them.
           </p>
         </motion.div>

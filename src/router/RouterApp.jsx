@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { Home } from '../components/layout';
-import { Footer } from '../components/sections';
 
 export const RouterApp = () => {
   return (
@@ -11,7 +10,6 @@ export const RouterApp = () => {
 
         <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
-      <Footer />
     </>
   );
 };

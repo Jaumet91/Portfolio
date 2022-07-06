@@ -12,7 +12,7 @@ const imgProjects = [journalApp, calendarApp, prueba];
 export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
   const [selectedItem, setSelectedItem] = useState(false);
 
-  const animate = selectedItem ? { x: 0, opacity: 1 } : { x: -15, opacity: 0 };
+  const animate = selectedItem ? { y: 0, opacity: 1 } : { y: 15, opacity: 0 };
 
   return (
     <motion.div
@@ -20,14 +20,17 @@ export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
         backgroundImage: `url(${imgProjects[i]})`,
         borderRadius: '6px',
       }}
-      className='bg-center bg-cover bg-no-repeat mb-5 cursor-pointer mx-auto max-h-[300px] relative'
+      className='bg-center bg-cover bg-no-repeat mb-5 cursor-pointer mx-auto max-h-[300px] relative shadow-inner'
       whileHover={{ y: -5 }}
       onMouseEnter={() => setSelectedItem(true)}
       onMouseLeave={() => setSelectedItem(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={animate}
-        transition={{ duration: 0.4, ease: [0.6, 0.05, -0.01, 0.9] }}>
+        transition={{
+          duration: 0.3,
+          ease: [0.6, 0.05, -0.01, 0.9],
+        }}>
         <div className='absolute dark:text-white text-light-black top-[37px] right-[80px] z-10'>
           <a
             href={code}
@@ -47,14 +50,14 @@ export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
           </a>
         </div>
         <a href={site} target='_blank' rel='noreferrer'>
-          <div className=' bg-secondary/95 dark:bg-secondary-inverted/95 drop-shadow-md transition-shadow rounded-md'>
+          <div className=' bg-secondary dark:bg-secondary-inverted drop-shadow-md transition-shadow rounded-md'>
             <div className='pt-8 px-8 '>
               <span className='text-primary dark:text-primary-inverted'>
                 <IoFolderOutline size={50} />
               </span>
             </div>
             <div className='px-8 pb-8 '>
-              <h3 className='text-light-black dark:text-white pt-10 font-medium md:text-2xl text-xl transition-colors'>
+              <h3 className='text-primary dark:text-primary-inverted pt-10 font-medium md:text-2xl text-xl transition-colors'>
                 {title}
               </h3>
               <div className='dark:text-white text-light-black  mt-3 '>
