@@ -77,7 +77,7 @@ export const Navbar = () => {
             transition={{
               ease: 'easeInOut',
               duration: 0.4,
-              delay: 2.2,
+              delay: 2,
             }}
             className='fixed hidden md:block md:left-[20px] lg:left-[40px] w-[40px] bottom-0 z-10'>
             <ul className='flex-col items-center m-0 p-0 dark:text-slate-300 text-light-black mb-5'>
@@ -111,7 +111,7 @@ export const Navbar = () => {
             transition={{
               ease: 'easeInOut',
               duration: 0.4,
-              delay: 2.2,
+              delay: 2,
             }}
             className='fixed hidden md:block right-[20px] lg:right-[40px] w-[40px] bottom-0 z-10 vertical-r 
             text-light-black dark:text-slate-300 font-extralight tracking-widest'>

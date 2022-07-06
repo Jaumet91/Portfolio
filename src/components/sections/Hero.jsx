@@ -12,9 +12,9 @@ export const Hero = () => {
           transition={{
             ease: 'easeInOut',
             duration: 0.4,
-            delay: 0.8,
+            delay: 1,
           }}>
-          <h1 className=' dark:text-white text-light-black mb-1'>
+          <h1 className=' dark:text-slate-300 text-light-black mb-1'>
             Hi, my name is
           </h1>
         </motion.div>
@@ -25,7 +25,7 @@ export const Hero = () => {
           transition={{
             ease: 'easeInOut',
             duration: 0.4,
-            delay: 1,
+            delay: 1.1,
           }}>
           <h1 className='font-bold leading-tight big-heading dark:text-primary-inverted text-primary'>
             Jaime Cortes
@@ -53,7 +53,7 @@ export const Hero = () => {
           transition={{
             ease: 'easeInOut',
             duration: 0.4,
-            delay: 1.4,
+            delay: 1.3,
           }}
           className='mt-5'>
           <p className='leading-relaxed dark:text-slate-300 text-light-black md:max-w-[540px]'>
@@ -70,9 +70,9 @@ export const Hero = () => {
           transition={{
             ease: 'easeInOut',
             duration: 0.4,
-            delay: 1.6,
+            delay: 1.4,
           }}
-          className='mt-14'>
+          className='mt-10'>
           <a href='#contact'>
             <motion.button
               whileHover={{ y: -3 }}

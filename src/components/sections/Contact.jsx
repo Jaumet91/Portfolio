@@ -10,8 +10,8 @@ export const Contact = () => {
     <motion.section
       initial={{ y: 80, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 0.5, delay: 0 }}
       id='contact'
       className='max-w-[600px] pt-16 pb-28 sm:py-20 md:py-24 mx-auto relative'>
       <div>
@@ -19,7 +19,7 @@ export const Contact = () => {
           <span className='dark:text-primary-inverted text-primary pb-2 flex justify-center'>
             {"What's"} Next?
           </span>
-          <h2 className='dark:text-white text-light-black font-bold md:text-[34px] text-2xl pb-3'>
+          <h2 className='dark:text-white text-light-black font-bold md:text-[34px] text-2xl pb-5'>
             Get in touch
           </h2>
         </div>

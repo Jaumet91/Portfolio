@@ -5,9 +5,9 @@ import { FiGithub } from 'react-icons/fi';
 import { MdOpenInNew } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
-import { calendarApp, journalApp, prueba } from '../../../assets';
+import { calendarApp, journalApp, filmHub } from '../../../assets';
 
-const imgProjects = [journalApp, calendarApp, prueba];
+const imgProjects = [filmHub, calendarApp, journalApp];
 
 export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
   const [selectedItem, setSelectedItem] = useState(false);
@@ -63,7 +63,7 @@ export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
               <div className='dark:text-white text-light-black  mt-3 '>
                 {desc}
               </div>
-              <div className='flex dark:text-white text-light-black text-sm mt-3'>
+              <div className='flex text-slate-500 dark:text-slate-400 text-sm mt-3'>
                 {tags.map((tag, i) => (
                   <div key={i} className='mr-2'>
                     {tag}

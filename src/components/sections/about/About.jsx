@@ -58,8 +58,8 @@ export const About = () => {
         <motion.article
           initial={{ y: 80, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.2 }}>
+          viewport={{ once: true, amount: 0 }}
+          transition={{ duration: 0.5, delay: 0 }}>
           <div>
             <span className='dark:text-primary-inverted text-primary pb-3'>
               Who I am
@@ -107,13 +107,13 @@ export const About = () => {
               </p>
             </div>
 
-            <div className='grid pb-14 lg:py-0 lg:place-content-between lg:pl-10'>
+            <div className='grid pb-14 lg:py-0 lg:place-content-between lg:pl-10 xl:pl-16'>
               {
                 <motion.div
                   initial={{ y: 80, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{ duration: 0.5, delay: 0 }}
                   className='my-14 lg:my-0'>
                   {skills.map((skill, i) => (
                     <motion.div key={skill.id}>
@@ -130,15 +130,15 @@ export const About = () => {
                 <motion.div
                   initial={{ y: 80, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}>
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{ duration: 0.5, delay: 0 }}>
                   <div className='flex '>
                     <AiOutlineBulb
                       size={60}
                       className='bg-primary dark:bg-primary-inverted p-2 rounded-md text-light-black
-                       dark:text-white transition-colors shrink-0 lg:hidden'
+                       dark:text-white transition-colors shrink-0 '
                     />
-                    <div className='pl-5 lg:pl-0'>
+                    <div className='pl-5'>
                       <h3 className='dark:text-primary-inverted text-primary font-bold md:text-[24px] text-xl'>
                         Product Design
                       </h3>
@@ -156,15 +156,15 @@ export const About = () => {
                 <motion.div
                   initial={{ y: 80, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}>
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{ duration: 0.5, delay: 0 }}>
                   <div className='flex '>
                     <AiOutlineDesktop
                       size={60}
                       className='bg-primary dark:bg-primary-inverted p-2 rounded-md text-light-black
-                       dark:text-white transition-colors shrink-0 lg:hidden'
+                       dark:text-white transition-colors shrink-0 '
                     />
-                    <div className='pl-5 lg:pl-0'>
+                    <div className='pl-5'>
                       <h3 className='dark:text-primary-inverted text-primary font-bold md:text-[24px] text-xl '>
                         Website Development
                       </h3>
@@ -196,8 +196,8 @@ export const About = () => {
             <motion.div
               initial={{ y: 80, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0 }}
               className='w-[342px] sm:w-[400px] md:w-[140px] lg:w-[190px] xl:w-[250px] h-[700px]
                 xl:h-[750px] md:h-[400px] sm:h-[830px] sm:mt-14 sm:mb-0 relative flex
                 justify-center items-center overflow-hidden z-10'>

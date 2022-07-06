@@ -29,7 +29,7 @@ import laptopLight from './laptop-light.png';
 import laptopDark from './laptop-dark.png';
 import calendarApp from './calendar-app.png';
 import journalApp from './journal-app.png';
-import prueba from './prueba.png';
+import filmHub from './filmHub.png';
 
 export {
   desktopAvatarLight,
@@ -57,7 +57,7 @@ export {
   laptopDark,
   calendarApp,
   journalApp,
-  prueba,
+  filmHub,
 };
 
 export const imagesLight = [imageOneLight, imageTwoLight, imageThreeLight];

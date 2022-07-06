@@ -22,8 +22,8 @@ export const Projects = () => {
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, delay: 0.2 }}>
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5, delay: 0 }}>
         <div>
           <span className='dark:text-primary-inverted text-primary pb-3'>
             My portfolio
@@ -40,7 +40,7 @@ export const Projects = () => {
       <motion.div
         initial={'offscreen'}
         whileInView={'onscreen'}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0 }}
         transition={{ staggerChildren: 0.2 }}
         className='sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-5 my-12'>
         {projects.map((project, i) => (
