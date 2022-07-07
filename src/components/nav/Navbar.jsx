@@ -13,6 +13,7 @@ import { ThemeContext } from '../../utils';
 import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
 import { NavToggler, Avatar } from './';
+import { resume } from '../../assets';
 import {
   container,
   item,
@@ -179,7 +180,7 @@ export const Navbar = () => {
               </motion.ul>
 
               <motion.a
-                href='../../../static/Jaime_Cortes_Full_Stack_Developer.pdf'
+                href={resume}
                 target='_blank'
                 variants={btnAni}
                 whileHover='hover'
@@ -297,10 +298,11 @@ export const Navbar = () => {
                     whileTap='tap'
                     className=' w-[150px] flex justify-center'>
                     <a
-                      href='../../../static/Jaime_Cortes_Full_Stack_Developer.pdf'
+                      href={resume}
                       target='_blank'
                       className='px-8 py-4 rounded-md bg-btn hover:shadow-md text-white dark:text-background-inverted
-                      shadow-black/10 transition-shadow dark:bg-white'>
+                      shadow-black/10 transition-shadow dark:bg-white'
+                      rel='noreferrer'>
                       Resume
                     </a>
                   </motion.div>

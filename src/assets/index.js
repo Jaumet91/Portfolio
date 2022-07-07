@@ -30,6 +30,7 @@ import laptopDark from './laptop-dark.png';
 import calendarApp from './calendar-app.png';
 import journalApp from './journal-app.png';
 import filmHub from './filmHub.png';
+import resume from './Jaime_Cortes_Full_Stack_Developer.pdf';
 
 export {
   desktopAvatarLight,
@@ -58,6 +59,7 @@ export {
   calendarApp,
   journalApp,
   filmHub,
+  resume,
 };
 
 export const imagesLight = [imageOneLight, imageTwoLight, imageThreeLight];
