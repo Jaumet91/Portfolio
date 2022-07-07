@@ -96,7 +96,7 @@ export const About = () => {
                 I started building computers and learned all about hardware and
                 water cooling, but my interest in technologies changed as I
                 expanded my knowledge from taking apart equipment to building
-                new websites in code.
+                new websites and coding.
               </p>
               <p className='dark:text-white text-light-black'>
                 A few months ago {"I've"} discovered my passion for the world of
@@ -170,8 +170,8 @@ export const About = () => {
                       </h3>
                       <p className='dark:text-white text-light-black pt-4 '>
                         Websites {"don't"} have to be static. I love making
-                        pages come to life with cool animations. My layouts will
-                        work on any device, big or small.
+                        pages come to life with smooth animations. My layouts
+                        will work on any device, big or small.
                       </p>
                     </div>
                   </div>

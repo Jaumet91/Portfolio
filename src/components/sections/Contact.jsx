@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 
+import { config } from '../../config';
+
+const { email } = config;
+
 const btnAni = {
   hover: { y: -3 },
   tap: { y: 0 },
@@ -31,7 +35,8 @@ export const Contact = () => {
         </div>
       </div>
 
-      <motion.div
+      <motion.a
+        href={`mailto:${email}`}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -45,11 +50,11 @@ export const Contact = () => {
           whileHover='hover'
           whileTap='tap'
           className='px-6 py-3 w-fit rounded-md bg-btn hover:shadow-md
-                text-white dark:text-background-inverted hover:shadow-black/30 transition-shadow 
+                text-white dark:text-background-inverted hover:shadow-black/20 transition-shadow 
                 dark:bg-white justify-center'>
           Say Hello
         </motion.button>
-      </motion.div>
+      </motion.a>
     </motion.section>
   );
 };

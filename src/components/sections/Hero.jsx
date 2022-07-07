@@ -57,10 +57,10 @@ export const Hero = () => {
           }}
           className='mt-5'>
           <p className='leading-relaxed dark:text-slate-300 text-light-black md:max-w-[540px]'>
-            {"I'm"} a electronic engineer specializing in building exceptional
-            digital experiences. {"I've"} entered the world of web development
-            in April 2022, taken a deep interest in making websites the best
-            they can be for everyone using them.
+            {"I'm"} a electronic engineer and {"I'm"} specializing in building
+            exceptional digital experiences. {"I've"} entered the world of web
+            development in April 2022, taken a deep interest in making websites
+            the best they can be for everyone using them.
           </p>
         </motion.div>
 
@@ -78,7 +78,7 @@ export const Hero = () => {
               whileHover={{ y: -3 }}
               whileTap={{ y: 0 }}
               className='px-8 py-4 sm:w-[200px] w-[195px] rounded-md bg-primary hover:shadow-md
-                dark:text-white hover:shadow-black/30 transition-shadow 
+              dark:text-white hover:shadow-black015 transition-shadow 
               dark:bg-primary-inverted justify-center text-light-black'>
               {"Let's"} book a call
             </motion.button>

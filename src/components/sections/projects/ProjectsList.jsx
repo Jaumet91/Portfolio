@@ -20,7 +20,7 @@ export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
         backgroundImage: `url(${imgProjects[i]})`,
         borderRadius: '6px',
       }}
-      className='bg-center bg-cover bg-no-repeat mb-5 cursor-pointer mx-auto max-h-[300px] relative shadow-inner'
+      className='bg-center bg-cover bg-no-repeat mb-5 cursor-pointer mx-auto max-h-[300px] relative shadow-md'
       whileHover={{ y: -5 }}
       onMouseEnter={() => setSelectedItem(true)}
       onMouseLeave={() => setSelectedItem(false)}>

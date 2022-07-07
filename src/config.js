@@ -1,5 +1,5 @@
 export const config = {
-  email: 'xxx@gmail.com', // TODO: Email
+  email: 'jaimecortesdev@gmail.com',
 
   socialMedia: [
     {
@@ -8,7 +8,7 @@ export const config = {
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/Jaumet_GG',
+      url: 'https://twitter.com/jaimecortesdev',
     },
     {
       name: 'Linkedin',
@@ -43,7 +43,7 @@ export const config = {
     {
       id: 'CalendarApp',
       title: 'MERN Calendar',
-      description: 'A calendar app for Create events. Users can only Edit and Delete their own events.',
+      description: 'A calendar app to Create events. Users can only Edit and Delete their own events.',
       tags: ['React','Express','Node.js','MongoDB'],
       urlSite: 'https://mern-calendar-jcf.herokuapp.com/login',
       urlCode: 'https://github.com/Jaumet91/MERN-calendar-Backend',

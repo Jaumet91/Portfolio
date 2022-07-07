@@ -22,7 +22,7 @@ import {
   sidebarVariants,
 } from './animations';
 
-const { navLinks, socialMedia } = config;
+const { navLinks, socialMedia, email } = config;
 
 const iconsMenu = [AiOutlineCoffee, AiOutlineExperiment, AiOutlineShake];
 const iconsFixed = [FiGithub, FiTwitter, FiLinkedin];
@@ -118,9 +118,9 @@ export const Navbar = () => {
             <div className='flex items-center relative'>
               <motion.a
                 whileHover={{ y: -3 }}
-                href='mailto:jacofu91@gmail.com'
+                href={`mailto:${email}`}
                 className='mx-[20px] my-auto mb-5 text-xs hover:text-primary dark:hover:text-purple-500'>
-                jacofu91@gmail.com
+                {email}
               </motion.a>
               <span className='hidden md:block h-20 w-[1px] m-auto dark:bg-slate-300 bg-light-black'></span>
             </div>
@@ -178,14 +178,16 @@ export const Navbar = () => {
                 })}
               </motion.ul>
 
-              <motion.button
+              <motion.a
+                href='../../../static/Jaime_Cortes_Full_Stack_Developer.pdf'
+                target='_blank'
                 variants={btnAni}
                 whileHover='hover'
                 whileTap='tap'
                 className='px-6 py-3 rounded-md ml-2 bg-secondary dark:bg-secondary-inverted  hover:shadow-md 
               shadow-black/5 transition-shadow'>
                 Resume
-              </motion.button>
+              </motion.a>
 
               <div
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -294,11 +296,13 @@ export const Navbar = () => {
                     whileHover='hover'
                     whileTap='tap'
                     className=' w-[150px] flex justify-center'>
-                    <button
+                    <a
+                      href='../../../static/Jaime_Cortes_Full_Stack_Developer.pdf'
+                      target='_blank'
                       className='px-8 py-4 rounded-md bg-btn hover:shadow-md text-white dark:text-background-inverted
-                      shadow-black/5 transition-shadow dark:bg-white'>
-                      Resume {/* TODO: descarga CV */}
-                    </button>
+                      shadow-black/10 transition-shadow dark:bg-white'>
+                      Resume
+                    </a>
                   </motion.div>
                 </motion.div>
               </motion.nav>
