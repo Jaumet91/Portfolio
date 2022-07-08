@@ -1,5 +1,5 @@
 export const config = {
-  email: 'jaimecortesdev@gmail.com',
+  email: 'hello@jaimecortesdev.com',
 
   socialMedia: [
     {

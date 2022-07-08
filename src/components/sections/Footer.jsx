@@ -6,7 +6,7 @@ const { socialMedia } = config;
 
 export const Footer = () => {
   return (
-    <div className='flex-col w-fit mx-auto left-0 right-0 min-h-[70px]'>
+    <footer className='flex-col w-fit mx-auto left-0 right-0 min-h-[70px]'>
       <ul className='flex justify-between w-[140px] mx-auto left-0 right-0 md:hidden'>
         {socialMedia.map(({ url, name }, i) => {
           const Icon = iconsFixed[i];
@@ -28,6 +28,6 @@ export const Footer = () => {
       <div className='text-xs pb-10 pt-5 dark:text-white text-light-black'>
         Designed & Built by Jaime Cortes
       </div>
-    </div>
+    </footer>
   );
 };
