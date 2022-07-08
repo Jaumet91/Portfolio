@@ -1,32 +1,37 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { IoFolderOutline } from 'react-icons/io5';
 import { FiGithub } from 'react-icons/fi';
 import { MdOpenInNew } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
+import { ThemeContext } from '../../../utils';
 import { calendarApp, journalApp, filmHub } from '../../../assets';
 
 const imgProjects = [filmHub, calendarApp, journalApp];
 
 export const ProjectsList = ({ title, desc, tags, code, site, i }) => {
+  const { lgScreen, width } = useContext(ThemeContext);
   const [selectedItem, setSelectedItem] = useState(false);
-
   const animate = selectedItem ? { y: 0, opacity: 1 } : { y: 15, opacity: 0 };
 
   return (
     <motion.div
-      style={{
-        backgroundImage: `url(${imgProjects[i]})`,
-        borderRadius: '6px',
-      }}
+      style={
+        width > lgScreen
+          ? {
+              backgroundImage: `url(${imgProjects[i]})`,
+              borderRadius: '6px',
+            }
+          : {}
+      }
       className='bg-center bg-cover bg-no-repeat mb-5 cursor-pointer mx-auto max-h-[300px] relative shadow-md'
       whileHover={{ y: -5 }}
       onMouseEnter={() => setSelectedItem(true)}
       onMouseLeave={() => setSelectedItem(false)}>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={animate}
+        animate={width > lgScreen ? animate : { y: 0, opacity: 1 }}
         transition={{
           duration: 0.3,
           ease: [0.6, 0.05, -0.01, 0.9],

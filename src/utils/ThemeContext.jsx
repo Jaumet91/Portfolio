@@ -22,8 +22,22 @@ export const ThemeProvider = ({ children }) => {
     rawSetTheme(theme);
   }, [theme]);
 
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 767;
+  const lgScreen = 1023;
+
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme, width, breakpoint, lgScreen }}>
       {children}
     </ThemeContext.Provider>
   );

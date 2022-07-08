@@ -14,14 +14,7 @@ import { useScrollDirection } from '../../hooks';
 import { config } from '../../config';
 import { NavToggler, Avatar } from './';
 import { resume } from '../../assets';
-import {
-  container,
-  item,
-  btnAni,
-  menuItemVariants,
-  navigationVariants,
-  sidebarVariants,
-} from './animations';
+import { container, item, btnAni, sidebarVariants } from './animations';
 
 const { navLinks, socialMedia, email } = config;
 
@@ -29,28 +22,17 @@ const iconsMenu = [AiOutlineCoffee, AiOutlineExperiment, AiOutlineShake];
 const iconsFixed = [FiGithub, FiTwitter, FiLinkedin];
 
 export const Navbar = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme, width, breakpoint } = useContext(ThemeContext);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isOpen, toggleOpen] = useCycle(false, true);
-  const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 767;
 
   if (isOpen) {
     document.body.style.overflow = 'hidden';
   } else {
     document.body.style.overflow = '';
   }
-
-  useEffect(() => {
-    const handleResizeWindow = () => setWidth(window.innerWidth);
-
-    window.addEventListener('resize', handleResizeWindow);
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -269,15 +251,12 @@ export const Navbar = () => {
                     )}
                   </div>
                   <div className='text-center'>
-                    <motion.ul
-                      variants={navigationVariants}
-                      className='inline-block text-center'>
+                    <ul className='inline-block text-center'>
                       {navLinks.map(({ url, name }, i) => {
                         const Icon = iconsMenu[i];
                         return (
-                          <motion.li
+                          <li
                             key={i}
-                            variants={menuItemVariants}
                             className='cursor-pointer my-14 hover:text-primary text-center
                           dark:hover:text-primary-inverted dark:text-white text-light-black transition-colors'>
                             <a href={url} onClick={() => toggleOpen(false)}>
@@ -286,10 +265,10 @@ export const Navbar = () => {
                                 <span className='ml-5'>{name}</span>
                               </div>
                             </a>
-                          </motion.li>
+                          </li>
                         );
                       })}
-                    </motion.ul>
+                    </ul>
                   </div>
 
                   <motion.div

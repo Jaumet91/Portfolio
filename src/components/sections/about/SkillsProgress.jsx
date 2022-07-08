@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-export const SkillsProgress = ({ name, skill, i }) => {
+export const SkillsProgress = ({ lgScreen, width, name, skill, i }) => {
   return (
     <div className='flex items-center'>
       <div
@@ -13,10 +13,10 @@ export const SkillsProgress = ({ name, skill, i }) => {
         className='relative h-7 lg:h-[22px] w-full overflow-hidden rounded-r shadow-inner
            bg-slate-100 dark:bg-secondary-inverted flex justify-end items-center'>
         <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill}%` }}
-          viewport={{ once: true, amount: 1 }}
-          transition={{ duration: 0.5, delay: i * 0.2 }}
+          initial={width > lgScreen ? { width: 0 } : { width: `${skill}%` }}
+          whileInView={width > lgScreen ? { width: `${skill}%` } : {}}
+          viewport={width > lgScreen ? { once: true, amount: 1 } : {}}
+          transition={width > lgScreen ? { duration: 0.5, delay: i * 0.2 } : {}}
           className='absolute inset-0 h-7 lg:h-[22px] transition bg-primary dark:bg-primary-inverted rounded-r'></motion.div>
         <div className='text-end hidden  sm:flex sm:justify-end text-xs px-4 lg:px-2 text-slate-500 '>
           {skill}%
@@ -30,4 +30,6 @@ SkillsProgress.propTypes = {
   name: PropTypes.string.isRequired,
   skill: PropTypes.string.isRequired,
   i: PropTypes.number.isRequired,
+  lgScreen: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
 };

@@ -38,7 +38,7 @@ const variants = {
 };
 
 export const About = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, width, lgScreen } = useContext(ThemeContext);
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = wrap(0, imagesLight.length, page);
 
@@ -55,11 +55,7 @@ export const About = () => {
       id='about'
       className='lg:max-w-[1000px] md:max-w-[671px] mx-auto relative py-16 sm:py-20 md:py-24'>
       <div className='md:pb-10 lg:pb-32 xl:pb-40'>
-        <motion.article
-          initial={{ y: 80, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0 }}
-          transition={{ duration: 0.5, delay: 0 }}>
+        <article>
           <div>
             <span className='dark:text-primary-inverted text-primary pb-3'>
               Who I am
@@ -73,7 +69,12 @@ export const About = () => {
           </div>
 
           <div className='flex-col lg:grid lg:grid-cols-2'>
-            <div className='lg:grid lg:place-content-between'>
+            <motion.div
+              initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+              whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+              viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+              transition={width > lgScreen ? { duration: 0.5, delay: 0 } : {}}
+              className='lg:grid lg:place-content-between'>
               <p className='dark:text-white text-light-black mb-4'>
                 Hello, {"I'm"} Jaime Cortes a electronic engenieer based in
                 Spain. I develop websites with{' '}
@@ -105,19 +106,23 @@ export const About = () => {
                 looking for a junior dev position to finally kick start my
                 career and learn among professionals.
               </p>
-            </div>
+            </motion.div>
 
             <div className='grid pb-14 lg:py-0 lg:place-content-between lg:pl-10 xl:pl-16'>
               {
                 <motion.div
-                  initial={{ y: 80, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0 }}
-                  transition={{ duration: 0.5, delay: 0 }}
+                  initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+                  whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+                  viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+                  transition={
+                    width > lgScreen ? { duration: 0.5, delay: 0 } : {}
+                  }
                   className='my-14 lg:my-0'>
                   {skills.map((skill, i) => (
                     <motion.div key={skill.id}>
                       <SkillsProgress
+                        width={width}
+                        lgScreen={lgScreen}
                         name={skill.name}
                         skill={skill.skill}
                         i={i}
@@ -128,10 +133,12 @@ export const About = () => {
               }
               <div className='h-fit lg:mt-14'>
                 <motion.div
-                  initial={{ y: 80, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0 }}
-                  transition={{ duration: 0.5, delay: 0 }}>
+                  initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+                  whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+                  viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+                  transition={
+                    width > lgScreen ? { duration: 0.5, delay: 0 } : {}
+                  }>
                   <div className='flex '>
                     <AiOutlineBulb
                       size={60}
@@ -154,10 +161,12 @@ export const About = () => {
 
               <div className='h-fit mt-14'>
                 <motion.div
-                  initial={{ y: 80, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0 }}
-                  transition={{ duration: 0.5, delay: 0 }}>
+                  initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+                  whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+                  viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+                  transition={
+                    width > lgScreen ? { duration: 0.5, delay: 0 } : {}
+                  }>
                   <div className='flex '>
                     <AiOutlineDesktop
                       size={60}
@@ -179,7 +188,7 @@ export const About = () => {
               </div>
             </div>
           </div>
-        </motion.article>
+        </article>
       </div>
 
       <div className='relative grid place-content-center'>
@@ -194,10 +203,10 @@ export const About = () => {
             className='grid place-content-center pt-7 sm:pt-0 img-shadow md:-bottom-[70px]
            xl:-bottom-[150px] lg:-bottom-[30px] md:absolute'>
             <motion.div
-              initial={{ y: 80, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: 0 }}
+              initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+              whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+              viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+              transition={width > lgScreen ? { duration: 0.5, delay: 0 } : {}}
               className='w-[342px] sm:w-[400px] md:w-[140px] lg:w-[190px] xl:w-[250px] h-[700px]
                 xl:h-[750px] md:h-[400px] sm:h-[830px] sm:mt-14 sm:mb-0 relative flex
                 justify-center items-center overflow-hidden z-10'>

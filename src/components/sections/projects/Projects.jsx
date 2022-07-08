@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 import { config } from '../../../config';
 import { ProjectsList } from './ProjectsList';
+import { ThemeContext } from '../../../utils';
 
 const { projects } = config;
 
@@ -15,15 +17,12 @@ const imageAnimate = {
 };
 
 export const Projects = () => {
+  const { width, lgScreen } = useContext(ThemeContext);
   return (
     <section
       id='projects'
       className='max-w-[1000px] mx-auto py-16 sm:py-20 md:py-24'>
-      <motion.div
-        initial={{ y: 80, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0 }}
-        transition={{ duration: 0.5, delay: 0 }}>
+      <div>
         <div>
           <span className='dark:text-primary-inverted text-primary pb-3'>
             My portfolio
@@ -35,13 +34,13 @@ export const Projects = () => {
           </h2>
           <span className='w-full sm:w-[300px] h-[1px] bg-slate-400 dark:bg-slate-600 ml-3 mt-1 rounded-3xl'></span>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
-        initial={'offscreen'}
-        whileInView={'onscreen'}
-        viewport={{ once: true, amount: 0 }}
-        transition={{ staggerChildren: 0.2 }}
+        initial={width > lgScreen ? 'offscreen' : ''}
+        whileInView={width > lgScreen ? 'onscreen' : ''}
+        viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+        transition={width > lgScreen ? { staggerChildren: 0.2 } : {}}
         className='sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-5 my-12'>
         {projects.map((project, i) => (
           <motion.div key={project.id} variants={imageAnimate}>

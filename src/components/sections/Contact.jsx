@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 import { config } from '../../config';
+import { ThemeContext } from '../../utils';
 
 const { email } = config;
 
@@ -10,12 +12,13 @@ const btnAni = {
 };
 
 export const Contact = () => {
+  const { width, lgScreen } = useContext(ThemeContext);
   return (
     <motion.section
-      initial={{ y: 80, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0 }}
-      transition={{ duration: 0.5, delay: 0 }}
+      initial={width > lgScreen ? { y: 80, opacity: 0 } : {}}
+      whileInView={width > lgScreen ? { y: 0, opacity: 1 } : {}}
+      viewport={width > lgScreen ? { once: true, amount: 0 } : {}}
+      transition={width > lgScreen ? { duration: 0.5, delay: 0 } : {}}
       id='contact'
       className='max-w-[600px] pt-16 pb-28 sm:py-20 md:py-24 mx-auto relative'>
       <div>
@@ -37,13 +40,17 @@ export const Contact = () => {
 
       <motion.a
         href={`mailto:${email}`}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          ease: 'easeInOut',
-          duration: 0.4,
-          delay: 1.2,
-        }}
+        initial={width > lgScreen ? { opacity: 0, y: 10 } : {}}
+        animate={width > lgScreen ? { opacity: 1, y: 0 } : {}}
+        transition={
+          width > lgScreen
+            ? {
+                ease: 'easeInOut',
+                duration: 0.4,
+                delay: 1.2,
+              }
+            : {}
+        }
         className='flex justify-center'>
         <motion.button
           variants={btnAni}
